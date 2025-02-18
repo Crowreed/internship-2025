@@ -1,0 +1,3 @@
+toujours donner des exemples après les définitions ou ce genre de choses
+
+définir la notionde row degree dans sagemath et push tous les soirs? même le rapport ?
