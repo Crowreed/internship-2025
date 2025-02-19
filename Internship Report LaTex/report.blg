@@ -1,0 +1,17 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is 'report.blg'
+[70] biber:340> INFO - === mer. févr. 19, 2025, 10:44:29
+[82] Biber.pm:418> INFO - Reading 'report.bcf'
+[136] Biber.pm:972> INFO - Found 5 citekeys in bib section 0
+[146] Biber.pm:4383> INFO - Processing section 0
+[155] Biber.pm:4574> INFO - Looking for bibtex file 'references.bib' for section 0
+[156] bibtex.pm:1713> INFO - LaTeX decoding ...
+[160] bibtex.pm:1518> INFO - Found BibTeX data source 'references.bib'
+[213] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[214] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[214] Biber.pm:4203> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'fr-FR'
+[214] Biber.pm:4209> INFO - No sort tailoring available for locale 'fr-FR'
+[218] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[220] bbl.pm:757> INFO - Output to report.bbl
+[220] Biber.pm:130> WARN - legacy year field 'Consulté en 2025' in entry 'clef_unique_3' is not an integer - this will probably not sort properly.
+[220] Biber.pm:132> INFO - WARNINGS: 1

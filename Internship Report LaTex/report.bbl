@@ -1,0 +1,164 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{clef_unique_2}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4cc06714ba7ae6ddc7da18b73b6b57b5}{%
+           family={Allini},
+           familyi={A\bibinitperiod},
+           given={Elie\bibnamedelima Noumon},
+           giveni={E\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Université de Rennes 1}%
+      }
+      \strng{namehash}{4cc06714ba7ae6ddc7da18b73b6b57b5}
+      \strng{fullhash}{4cc06714ba7ae6ddc7da18b73b6b57b5}
+      \strng{bibnamehash}{4cc06714ba7ae6ddc7da18b73b6b57b5}
+      \strng{authorbibnamehash}{4cc06714ba7ae6ddc7da18b73b6b57b5}
+      \strng{authornamehash}{4cc06714ba7ae6ddc7da18b73b6b57b5}
+      \strng{authorfullhash}{4cc06714ba7ae6ddc7da18b73b6b57b5}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Diaporama}
+      \field{title}{Théorie alorithmique des nombres}
+      \field{year}{2014}
+    \endentry
+    \entry{clef_unique_4}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d4e4737d30067c7c431cbe13a74b6afc}{%
+           family={Gathen},
+           familyi={G\bibinitperiod},
+           given={Joachim\bibnamedelimb Von\bibnamedelima Zur},
+           giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod\bibinitdelim Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e9532582f6e4150bb206e3e4fed2ea55}{%
+           family={Gerhard},
+           familyi={G\bibinitperiod},
+           given={Jurgen},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{85a3794df30adb106a89a565d62c98d2}
+      \strng{fullhash}{85a3794df30adb106a89a565d62c98d2}
+      \strng{bibnamehash}{85a3794df30adb106a89a565d62c98d2}
+      \strng{authorbibnamehash}{85a3794df30adb106a89a565d62c98d2}
+      \strng{authornamehash}{85a3794df30adb106a89a565d62c98d2}
+      \strng{authorfullhash}{85a3794df30adb106a89a565d62c98d2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{From the Publisher:"Computer algebra systems are gaining more and more importance in all areas of science and engineering. This textbook gives a thorough introduction to the algorithmic basis of the mathematical engine in computer algebra systems." It is designed to accompany one- or two-semester courses for advanced undergraduate or graduate students in computer science or mathematics. Its comprehensiveness and authority make it also an essential reference for professionals in the area.}
+      \field{edition}{2}
+      \field{isbn}{0521826462}
+      \field{title}{Modern Computer Algebra}
+      \field{year}{2003}
+    \endentry
+    \entry{clef_unique_0}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=31be957bcabbd96b84fb495fceb0f092}{%
+           family={Lebreton},
+           familyi={L\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{31be957bcabbd96b84fb495fceb0f092}
+      \strng{fullhash}{31be957bcabbd96b84fb495fceb0f092}
+      \strng{bibnamehash}{31be957bcabbd96b84fb495fceb0f092}
+      \strng{authorbibnamehash}{31be957bcabbd96b84fb495fceb0f092}
+      \strng{authornamehash}{31be957bcabbd96b84fb495fceb0f092}
+      \strng{authorfullhash}{31be957bcabbd96b84fb495fceb0f092}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Diaporama}
+      \field{title}{A crash course on Order Bases : Theory and Algorithms}
+      \field{year}{2014}
+    \endentry
+    \entry{clef_unique_1}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bb550d5483e339a3c9f5d6410830718c}{%
+           family={Wallet},
+           familyi={W\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Université de Rennes}%
+      }
+      \strng{namehash}{bb550d5483e339a3c9f5d6410830718c}
+      \strng{fullhash}{bb550d5483e339a3c9f5d6410830718c}
+      \strng{bibnamehash}{bb550d5483e339a3c9f5d6410830718c}
+      \strng{authorbibnamehash}{bb550d5483e339a3c9f5d6410830718c}
+      \strng{authornamehash}{bb550d5483e339a3c9f5d6410830718c}
+      \strng{authorfullhash}{bb550d5483e339a3c9f5d6410830718c}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeldatesource}{nodate}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Document PDF, Notes de cours}
+      \field{title}{Réseaux euclidiens et cryptographie}
+    \endentry
+    \entry{clef_unique_3}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Réseau (géométrie)}}
+      \field{year}{Consulté en 2025}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
