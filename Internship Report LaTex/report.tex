@@ -25,7 +25,6 @@
 {}                               % Personnalisation du titre
 
 \theoremstyle{definitionstyle}
-
 \newtheorem{definition}{Définition}[chapter] % Numérotation par chapitres
 
 % Définition d'un style pour les exemples
@@ -41,6 +40,20 @@
 
 \theoremstyle{examplestyle}
 \newtheorem{example}{Exemple}[chapter] % Numérotation par section
+
+\newtheoremstyle{remarkstyle}  
+{10pt}                        % Espace avant
+{10pt}                        % Espace après
+{\normalfont}                 % Police normale pour le texte
+{}                            % Retrait
+{\itshape}                    % Titre en italique
+{.}                           % Ponctuation après le titre
+{1em}                         % Espace après le titre
+{}                            % Personnalisation du titre
+
+\theoremstyle{remarkstyle}
+\newtheorem{remark}{Remarque}[chapter] % Numérotation par chapitres
+
 
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry} % Définition des marges du document (A4 avec 2.5 cm sur chaque côté)
 
@@ -86,9 +99,9 @@
 			
 			% Titre
 			\vspace{2cm}
-			\Huge{\textbf{Rapport de stage : trouver un titre intéréssant}} \\
+			\Huge{\textbf{Rapport de stage : Réduction de réseaux - adaptations d'idées provenant du cas polynomiale au cas entier.}} \\
 			\vspace{0.5cm}
-			\large{\textit{HAM2FDS4 : Stage académique}} \\
+			\large{\textit{HAI001I : Stage académique}} \\
 			
 			% Espacement
 			\vspace{2cm}
@@ -118,7 +131,7 @@
 		\end{center}
 	\end{titlepage}
 	
-	
+	\chapter*{Remerciements}
 	% Table des matières
 	\tableofcontents
 	
@@ -126,12 +139,130 @@
 	\chapter*{Notations}
 	\addcontentsline{toc}{chapter}{Notations}  % Ajoute au sommaire si nécessaire
 	
+	$\mathbb{Z}$ désigne l'ensemble des entiers relatifs.
 	
-	$\mathbb{Z}$ désigne l'ensemble des entiers naturels.
+	$\mathbb{R}$ désigne l'ensemble des réels.	
 	
-	\chapter{Introduction}
+	Les réseaux seront désignés par une lettre majuscule calligraphiée, telle que $\mathcal{L}$.
 	
-	\chapter{Work in progress}
+	\chapter*{Guide de lecture}
+
+	
+	
+	
+	
+	
+	
+	\chapter*{Introduction}
+	
+	L'objectif de mon stage est d'étudier les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau afin d'adapter celles du cas polynomial au cas entier.
+	
+	La réduction de réseau polynomiaux est un outil important en cryptographie 
+	
+	\chapter{Réseaux euclidiens et polynomiaux}
+	
+	\section{Généralités sur les réseaux}
+	\subsection{Définitions et exemples}
+	Nous considérons un espace euclidien, c'est-à-dire un espace vectoriel réel de dimension finie muni d'un produit scalaire, noté $\langle f, g \rangle$. Ici, nous utiliserons le produit scalaire usuel, défini par $\langle f, g \rangle = f \cdot g^T$ lequel induit la norme-2, donnée par $\|f\|_2=(f \cdot f^T)^{1/2}$.
+	
+	\begin{definition}%%%%%%ùfinir cette def
+		Soit $n \in \mathbb{N}$. Z module reseau "euclidien"?
+	\end{definition}
+
+	\begin{definition}[\cite{clef_unique_1}]
+		Un \textbf{réseau euclidien} est un sous-groupe discret de $\mathbb{R}^n$
+	\end{definition}
+
+	%pour etre discret faut une norme
+
+	\begin{definition}[\cite{clef_unique_2}]
+		Un réseau euclidien $(\Lambda, q)$ est un $\mathbb{Z}$-module libre $\Lambda$ de rang fini avec une forme quadratique définie positive $q$ sur $\Lambda \otimes_\mathbb{Z} \mathbb{R}$ 
+	\end{definition}
+	
+	%parler des reseaux polynomiauxEn remplacant Z par anneau de polynome, on a des reseaux polynomiaux.
+	
+	%Ces définitions sont équivalentes??
+	
+	\begin{example}
+		
+	\end{example}
+	def de la base d'un reseau
+	
+	def d'un plus court vecteur
+	
+	\begin{definition}[\cite{clef_unique_1}]
+		On appelle minimum d'un réseau $\mathcal{L}$ la quantité
+		
+		$$\lambda_1 = min\{r>0 : |\mathcal{B}(r)\cap\mathcal{L}|>1\} \in \mathbb{R_+}$$
+	\end{definition}
+	
+	
+	problematique -> differentes bases -> des bases avec de cours vecteurs,
+	
+	
+	
+	
+	parler des problemes SVP
+	 probleme NP -difficile
+	
+	\subsection{Quelques problèmes algorithmiques liés aux réseaux euclidiens}
+	
+	Le calcul du plus court vecteur dans un réseau est un problème difficile.
+	
+	Considérons le problème suivant :
+	
+	\begin{itemize}
+		\item \textbf{Shortest Vector Problem (SVP)} : Étant donnée une base $B$ d’un réseau $L$, trouver un vecteur $v \neq 0$ tel que $\|v\| = \lambda_1(L)$. Ce problème est \textbf{NP-complet} (Ajtai).
+	\end{itemize}
+	
+	On s’intéresse souvent à une version approximative plus accessible :
+	
+	\begin{itemize}
+		\item \textbf{SVP$_\gamma$}, où $\gamma > 0$ : Étant donnée une base $B$ du réseau $L$, trouver un vecteur $v \neq 0$ tel que $\|v\| \leq \gamma \cdot \lambda_1(L)$.
+	\end{itemize}
+	
+	L’état des connaissances actuelles est le suivant :
+	
+	\begin{itemize}
+		\item Pour $\gamma = O(1)$, le problème reste \textbf{NP-complet}.
+		\item Pour $\gamma = \text{poly}(n)$, il existe des algorithmes en \textbf{temps exponentiel}.
+		\item Pour $\gamma = 2^{O(n)}$, l’algorithme \textbf{LLL} permet de le résoudre en \textbf{temps polynomial}.
+	\end{itemize}
+	
+	Un autre problème important concerne la recherche de vecteurs proches dans un réseau.
+	
+	\begin{itemize}
+		\item \textbf{Closest Vector Problem (CVP)} : Étant donnés une cible $t \in \mathbb{R}^m$ et un réseau $L(B)$, trouver un vecteur $v \in L$ tel que 
+		\[
+		\|t - v\| = d(t, L) := \min \{ \|t - v\| \mid v \in L \}.
+		\]
+	\end{itemize}
+	
+	De même, on peut considérer une version approximative :
+	
+	\begin{itemize}
+		\item \textbf{CVP$_\gamma$}, où $\gamma > 0$ : Trouver un vecteur $v \in L$ tel que 
+		\[
+		\|t - v\| \leq \gamma \cdot d(t, L).
+		\]
+	\end{itemize}
+	
+	Le problème CVP est en général difficile pour un réseau arbitraire. Cependant, pour certaines familles spécifiques de réseaux, comme $\mathbb{Z}^n$, des algorithmes en temps polynomial sont connus. La qualité de la base choisie joue un rôle crucial dans la résolution du problème.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	def Orthogonalisation de Gram-Scmidt
+	exemple
+	parler de la complexité de Gram Schmidt
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	\section{Réduction de réseaux euclidiens et polynomiaux}
+	
+	\subsection{Réduction de réseaux euclidiens}
+	
+	\subsection{Réduction de réseaux polynomiaux}
+	
+	reseau reduit chap 16
 	
 	\begin{definition}[\cite{clef_unique_0}]
 		Soit $\mathbb{K}$ un corps et $M \in \mathbb{K}[x]_{1 \times n}$. On définit le \textbf{degré de ligne} du vecteur ligne M par : 
@@ -158,12 +289,81 @@
 		
 	\end{example}
 	
+	\begin{definition}
+		Soit $s \in \mathbb{Z}^n$. On définit le degré de ligne décalé du vecteur ligne M par :
+		$$rdeg_s(M)=max(deg(m_i)+s_i\\)$$
+	\end{definition}
+
 	Je cite \cite{clef_unique_1}  je cite \cite{clef_unique_2} et puis \cite{clef_unique_3} et finalement \cite{clef_unique_4}
 	
-	\chapter{Conclusion}
+	\chapter{Adaptation de la réduction de réseaux polynomiaux au cas entier}
+	
+	\chapter{Réseaux définis par relations plutôt que par générateurs}
+	\chapter*{Conclusion et perspectives}
 	
 	\appendix
-	\chapter{Anneaux et Modules}
+	%rajouter des corps ?
+	\chapter{Rappels d'algèbre : Groupes, Anneaux et Modules}
+
+	\section{Définition et propriétés des groupes}
+	
+	\section{Définition et propriétés des anneaux}
+	\section{Définition et propriétés des modules} %pq pas exmeple ?
+	
+	\subsection{Généralités}
+	
+	La notion de module est la généralisation naturelle de celle d'espace vectoriel. Dans toute la suite $A$ désigne un anneau commutatif.
+	
+	\begin{definition}
+		Un \textbf{$A$-module} $(M, +, \cdot)$ est un ensemble :
+		
+		\begin{itemize}
+			\item muni d'une loi interne $+$ tel que $(M, +)$ est un groupe abélien.
+			\item muni d'une loi externe $A \times M \rightarrow M, (a, m) \mapsto a \cdot m$, qu'on notera $am$ vérifiant les quatre propriétés suivantes :
+			\begin{enumerate}
+				\item Distributivité : $\alpha(m + m') = \alpha m + \alpha m'$
+				\item Distributivité : $(\alpha+b)m = \alpha m + \beta m$
+				\item Associativité : $(\alpha \beta)m = \alpha(\beta m)$
+				\item Neutre : $1m = m$
+				
+				pour tout $\alpha$, $\beta \in Ala 3$ et $m$, $m' \in M$
+			\end{enumerate}
+		\end{itemize}
+	\end{definition}
+	
+	\begin{remark}
+		La définition d'un module peut être vue comme une généralisation de celle d'un espace vectoriel. En effet, un module est un espace vectoriel dans lequel l'hypothèse sur $A$ est affaiblie : au lieu d'être un corps, $A$ est un anneau, ici commutatif, on ne se soucie donc pas de la distinction entre modules à gauche ou à droite.
+	\end{remark}
+	
+	\begin{definition}
+		Soit $M$ un $A$-module. Un sous-module $N$ de $M$ est un sous-groupe de (M, +) stable pour la multiplication externe par tout élément de A
+	\end{definition}
+	% contre exemple au fait d'etre stable pour la multiplication externe ?
+	
+	%exemple et contre-exemple de modules
+	
+	\begin{definition}
+		type fini
+	\end{definition}
+
+	\begin{definition}
+		libre
+	\end{definition}
+
+
+	proposition : libre et type fini => base finie
+	
+	exemples et contre-exemple
+	
+	%dire D	NS L'INTRO encore une fois que je vais donner des exemples et des contre exemple afin de mieux saisir les définitions
+	
+	%produit tensoriel
+	
+	\subsection{Modules sur un anneau principal}
+	Dans cette partie, A désigne un anneau principal.
+	
+	
+
 	
 	\printbibliography
 	

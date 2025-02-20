@@ -1,6 +1,17 @@
 \babel@toc {french}{}\relax 
-\contentsline {chapter}{Notations}{2}{chapter*.3}%
-\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Work in progress}{4}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Conclusion}{5}{chapter.3}%
-\contentsline {chapter}{\numberline {A}Anneaux et Modules}{6}{appendix.A}%
+\contentsline {chapter}{Notations}{3}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Réseaux euclidiens et polynomiaux}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Généralités sur les réseaux}{6}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Définitions et exemples}{6}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Quelques problèmes algorithmiques liés aux réseaux euclidiens}{6}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Réduction de réseaux euclidiens et polynomiaux}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Réduction de réseaux euclidiens}{7}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Réduction de réseaux polynomiaux}{7}{subsection.1.2.2}%
+\contentsline {chapter}{\numberline {2}Adaptation de la réduction de réseaux polynomiaux au cas entier}{8}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Réseaux définis par relations plutôt que par générateurs}{9}{chapter.3}%
+\contentsline {chapter}{\numberline {A}Rappels d'algèbre : Groupes, Anneaux et Modules}{11}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Définition et propriétés des groupes}{11}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Définition et propriétés des anneaux}{11}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Définition et propriétés des modules}{11}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}Généralités}{11}{subsection.A.3.1}%
+\contentsline {subsection}{\numberline {A.3.2}Modules sur un anneau principal}{12}{subsection.A.3.2}%
