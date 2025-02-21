@@ -54,6 +54,21 @@
 \theoremstyle{remarkstyle}
 \newtheorem{remark}{Remarque}[chapter] % Numérotation par chapitres
 
+% Définition du style pour l'environnement "proposition"
+\newtheoremstyle{propositionstyle}  
+{10pt}                        % Espace avant
+{10pt}                        % Espace après
+{\normalfont}                 % Police normale pour le texte
+{}                            % Retrait
+{\itshape}                    % Titre en italique
+{.}                           % Ponctuation après le titre
+{1em}                         % Espace après le titre
+{}                            % Pas d'autres spécifications
+
+% Définition de l'environnement proposition
+\theoremstyle{propositionstyle}
+\newtheorem{proposition}{Proposition}[chapter]  % Numérotation par chapitre
+
 
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry} % Définition des marges du document (A4 avec 2.5 cm sur chaque côté)
 
@@ -80,7 +95,10 @@
 \usepackage{color}
 \usepackage{comment}        % pour commenter plusieur ligne
 
-
+\usepackage[explicit]{titlesec}
+\usepackage{lmodern}
+\usepackage{lipsum}
+\usepackage{titlesec}
 
 \begin{document}
 	
@@ -99,7 +117,11 @@
 			
 			% Titre
 			\vspace{2cm}
-			\Huge{\textbf{Rapport de stage : Réduction de réseaux - adaptations d'idées provenant du cas polynomiale au cas entier.}} \\
+			\Large{\textbf{Rapport de stage}}
+			
+			\vspace{0.5cm}
+				
+				 \Large{\textbf{Réduction de réseaux - adaptations d'idées provenant du cas polynomiale au cas entier.}} \\
 			\vspace{0.5cm}
 			\large{\textit{HAI001I : Stage académique}} \\
 			
@@ -131,23 +153,29 @@
 		\end{center}
 	\end{titlepage}
 	
-	\chapter*{Remerciements}
-	% Table des matières
+	%\chapter*{Remerciements}
+	% à rédiger à la fin
+	
 	\tableofcontents
 	
-	\phantomsection
 	\chapter*{Notations}
 	\addcontentsline{toc}{chapter}{Notations}  % Ajoute au sommaire si nécessaire
 	
-	$\mathbb{Z}$ désigne l'ensemble des entiers relatifs.
+	\begin{itemize}
+		\item $\mathbb{Z}$ : L'ensemble des entiers relatifs.
+		\item $\mathbb{R}$ : L'ensemble des réels.
+		\item $\mathcal{L}$ : Un réseau, désigné par une lettre majuscule calligraphiée.
+		\item $A^T$ : La transposée de la matrice $A$.
+		\item $K$ : Un corps.
+		\item $F$ : Un corps fini.
+		\item $F[X]$ : L'anneau des polynômes univariés à coefficients dans le corps fini $F$.
+	\end{itemize}
 	
-	$\mathbb{R}$ désigne l'ensemble des réels.	
 	
-	Les réseaux seront désignés par une lettre majuscule calligraphiée, telle que $\mathcal{L}$.
+	\chapter*{Guide de Lecture}
+	\addcontentsline{toc}{chapter}{Guide de Lecture}
 	
-	\chapter*{Guide de lecture}
-
-	
+	Dans ce document, chaque définition est suivie d'un exemple concret illustrant la notion en question, ainsi que d'un contre-exemple visant à en exposer les subtilités et les exceptions éventuelles. Cette approche permet de mieux comprendre les conditions et les limitations associées à chaque concept. L'objectif est de clarifier les différences entre les situations où une définition est applicable et celles où elle ne l'est pas, afin de renforcer la compréhension approfondie des théorèmes et des constructions présentés.
 	
 	
 	
@@ -155,9 +183,11 @@
 	
 	\chapter*{Introduction}
 	
-	L'objectif de mon stage est d'étudier les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau afin d'adapter celles du cas polynomial au cas entier.
+	\chapter*{Introduction}
 	
-	La réduction de réseau polynomiaux est un outil important en cryptographie 
+	L'objectif de ce stage est d'explorer les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau. L'enjeu est d'adapter les méthodes de réduction utilisées dans le cadre des réseaux polynomiaux au cas des réseaux entiers.
+	
+	La réduction de réseau est un outil essentiel dans plusieurs domaines de la cryptographie, notamment dans les algorithmes de sécurité basés sur la difficulté de résoudre des problèmes liés aux réseaux. En particulier, la réduction de réseaux polynomiaux joue un rôle clé dans la recherche de solutions efficaces à ces problèmes, et l'adaptation de ces méthodes pour les réseaux entiers pourrait avoir des implications importantes pour la sécurité des systèmes cryptographiques. Ce stage vise donc à approfondir cette adaptation et à en étudier les applications pratiques.	
 	
 	\chapter{Réseaux euclidiens et polynomiaux}
 	
@@ -198,12 +228,6 @@
 	
 	
 	problematique -> differentes bases -> des bases avec de cours vecteurs,
-	
-	
-	
-	
-	parler des problemes SVP
-	 probleme NP -difficile
 	
 	\subsection{Quelques problèmes algorithmiques liés aux réseaux euclidiens}
 	
@@ -248,14 +272,7 @@
 	\end{itemize}
 	
 	Le problème CVP est en général difficile pour un réseau arbitraire. Cependant, pour certaines familles spécifiques de réseaux, comme $\mathbb{Z}^n$, des algorithmes en temps polynomial sont connus. La qualité de la base choisie joue un rôle crucial dans la résolution du problème.
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	def Orthogonalisation de Gram-Scmidt
-	exemple
-	parler de la complexité de Gram Schmidt
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	
+		
 	\section{Réduction de réseaux euclidiens et polynomiaux}
 	
 	\subsection{Réduction de réseaux euclidiens}
@@ -336,7 +353,7 @@
 	\end{remark}
 	
 	\begin{definition}
-		Soit $M$ un $A$-module. Un sous-module $N$ de $M$ est un sous-groupe de (M, +) stable pour la multiplication externe par tout élément de A
+		Soit $M$ un $A$-module. Un sous-module $N$ de $M$ est un sous-groupe de $(M, +)$ stable pour la multiplication externe par tout élément de $A$.
 	\end{definition}
 	% contre exemple au fait d'etre stable pour la multiplication externe ?
 	
@@ -362,7 +379,44 @@
 	\subsection{Modules sur un anneau principal}
 	Dans cette partie, A désigne un anneau principal.
 	
+	\chapter{Rappels d'algèbre linéaire}
 	
+	% demander à Romain si je met GS ici ou ailleurs
+	
+	\section{Orthonormalisation de Gram-Schmidt (GSO)}
+	
+	On se considère dans un espace euclidien. Soit \( B = (b_i)_{1 \leq i \leq n} \) une base de \( \mathbb{R}^n \), on peut construire la \textbf{base de Gram-Schmidt (GS)} associée à cette base par le procédé récursif suivant :
+	
+	
+	$$b_1^* := b_1$$
+	
+	
+	$$b_i^* := b_i - \sum_{j=1}^{i-1} \mu_{i,j} b_j^*, \quad \text{avec } \mu_{i,j} = \frac{\langle b_i, b_j^* \rangle}{\| b_j^* \|^2}$$
+	
+	où \( \mu_{i,j} \) est appelé \textbf{coefficient de Gram-Schmidt} associé au vecteur \( b_i \). \\
+	
+	Notons \( B^* \) la matrice des \( b_i^* \), et \( U \) la matrice des \( \mu_{i,j} \). Alors, on a la relation :
+	
+	$$B = B^* U$$
+	
+	 \begin{remark}
+	 	\begin{itemize}
+	 		\item  $U$ est triangulaire avec un déterminant égal à $1$.
+	 		\item On ne normalise pas, sinon cela introduit des racines et on risque de passer de \( \mathbb{Q} \) à \( \mathbb{R} \setminus \mathbb{Q} \). De plus, la normalisation impose un volume de $1$ et ne conserve donc pas l'information volumique du réseau associé.
+	 	\end{itemize}
+ 	\end{remark}
+	
+	
+	\begin{proposition}
+		\begin{itemize}
+			\item Conservation du volume : \( \det L = \prod \| b_i^* \| \).
+			\item Propriété du plus petit vecteur** : \( \lambda_1(\mathcal{L}) \geq \min \| b_i^* \| \).
+		\end{itemize}
+	\end{proposition}	
+	
+	Le coût de l'algorithme de Gram-Schmidt (GSO) est en \( O(n^3) \) opérations arithmétiques dans \( \mathbb{Q} \).
+	
+	\chapter{Code SageMath}
 
 	
 	\printbibliography
