@@ -60,7 +60,7 @@
 {10pt}                        % Espace après
 {\normalfont}                 % Police normale pour le texte
 {}                            % Retrait
-{\itshape}                    % Titre en italique
+{\bfseries}                    % Titre en italique
 {.}                           % Ponctuation après le titre
 {1em}                         % Espace après le titre
 {}                            % Pas d'autres spécifications
@@ -68,6 +68,21 @@
 % Définition de l'environnement proposition
 \theoremstyle{propositionstyle}
 \newtheorem{proposition}{Proposition}[chapter]  % Numérotation par chapitre
+
+% Définition du style pour l'environnement "théorème"
+\newtheoremstyle{theoremstyle}  
+{10pt}                        % Espace avant
+{10pt}                        % Espace après
+{\normalfont}                 % Police normale pour le texte
+{}                            % Retrait
+{\bfseries}                    % Titre en italique
+{.}                           % Ponctuation après le titre
+{1em}                         % Espace après le titre
+{}                            % Pas d'autres spécifications
+
+% Définition de l'environnement théorème
+\theoremstyle{theoremstyle}
+\newtheorem{theoreme}{Théorème}[chapter]  % Numérotation par chapitre
 
 
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry} % Définition des marges du document (A4 avec 2.5 cm sur chaque côté)
@@ -94,11 +109,23 @@
 \usepackage{float}
 \usepackage{color}
 \usepackage{comment}        % pour commenter plusieur ligne
-
-\usepackage[explicit]{titlesec}
-\usepackage{lmodern}
-\usepackage{lipsum}
+\usepackage{enumitem}
 \usepackage{titlesec}
+\usepackage{calc}
+\usepackage{times}
+\titleformat
+{\chapter} % command
+[display] % shape
+{\Large} % format
+{%
+	\rule{\widthof{CHAPITRE}}{0.6pt}\vspace{-0.3cm}\\
+	\makebox[0pt][l]{CHAPITRE \Huge\textbf{\thechapter}}\vspace{-0.6cm} \\
+	\rule{\widthof{CHAPITRE \Huge\textbf{\thechapter}}}{0.6pt}
+} % label
+{1ex} % sep
+{\huge\textit } 
+[
+] % after-code
 
 \begin{document}
 	
@@ -131,7 +158,7 @@
 			% Auteurs
 			\large{
 				\textbf{Lucas Noirot} \\
-				(\texttt{lucas.noirot@etu.umontpellier.fr})
+				(\texttt{\href{mailto:lucas.noirot@etu.umontpellier.fr}{lucas.noirot@etu.umontpellier.fr}})
 			}
 			
 			% Espacement
@@ -140,7 +167,7 @@
 			% Encadrant
 			\large{
 				\textbf{Encadrant :} \textbf{Romain Lebreton} \\
-				(\texttt{romain.lebreton@lirmm.fr})
+				(\texttt{\href{mailto:romain.lebreton@lirmm.fr}{romain.lebreton@lirmm.fr}})
 			}
 			
 			% Espacement
@@ -161,52 +188,57 @@
 	\chapter*{Notations}
 	\addcontentsline{toc}{chapter}{Notations}  % Ajoute au sommaire si nécessaire
 	
-	\begin{itemize}
+	\begin{itemize}[label={}]
 		\item $\mathbb{Z}$ : L'ensemble des entiers relatifs.
 		\item $\mathbb{R}$ : L'ensemble des réels.
 		\item $\mathcal{L}$ : Un réseau, désigné par une lettre majuscule calligraphiée.
 		\item $A^T$ : La transposée de la matrice $A$.
-		\item $K$ : Un corps.
-		\item $F$ : Un corps fini.
-		\item $F[X]$ : L'anneau des polynômes univariés à coefficients dans le corps fini $F$.
+		\item $\mathbb{K}$ : Un corps quelconque.
+		\item $\mathbb{F}$ : Un corps fini.
+		\item $\mathbb{F}[X]$ : L'anneau des polynômes univariés à coefficients dans le corps fini $F$.
 	\end{itemize}
 	
 	
 	\chapter*{Guide de Lecture}
 	\addcontentsline{toc}{chapter}{Guide de Lecture}
 	
-	Dans ce document, chaque définition est suivie d'un exemple concret illustrant la notion en question, ainsi que d'un contre-exemple visant à en exposer les subtilités et les exceptions éventuelles. Cette approche permet de mieux comprendre les conditions et les limitations associées à chaque concept. L'objectif est de clarifier les différences entre les situations où une définition est applicable et celles où elle ne l'est pas, afin de renforcer la compréhension approfondie des théorèmes et des constructions présentés.
+	Dans ce mémoire, chaque définition est suivie d'un exemple concret illustrant la notion en question, ainsi que d'un contre-exemple visant à en exposer les subtilités et les exceptions éventuelles. Cette approche permet de mieux comprendre les conditions et les limitations associées à chaque concept. L'objectif est de clarifier les différences entre les situations où une définition est applicable et celles où elle ne l'est pas, afin de renforcer la compréhension approfondie des théorèmes et des constructions présentés.
 	
-	
-	
-	
-	
-	\chapter*{Introduction}
+
 	
 	\chapter*{Introduction}
 	
 	L'objectif de ce stage est d'explorer les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau. L'enjeu est d'adapter les méthodes de réduction utilisées dans le cadre des réseaux polynomiaux au cas des réseaux entiers.
 	
-	La réduction de réseau est un outil essentiel dans plusieurs domaines de la cryptographie, notamment dans les algorithmes de sécurité basés sur la difficulté de résoudre des problèmes liés aux réseaux. En particulier, la réduction de réseaux polynomiaux joue un rôle clé dans la recherche de solutions efficaces à ces problèmes, et l'adaptation de ces méthodes pour les réseaux entiers pourrait avoir des implications importantes pour la sécurité des systèmes cryptographiques. Ce stage vise donc à approfondir cette adaptation et à en étudier les applications pratiques.	
+	La réduction de réseau est un outil essentiel dans plusieurs domaines de la cryptographie, notamment dans les algorithmes de sécurité basés sur la difficulté de résoudre des problèmes liés aux réseaux. En particulier, la réduction de réseaux polynomiaux est connue de manière polynomiale, et l'adaptation de ces méthodes pour les réseaux entiers pourrait avoir des implications importantes pour la sécurité des systèmes cryptographiques. Ce stage vise donc à approfondir cette adaptation et à en étudier les applications pratiques.	
 	
 	\chapter{Réseaux euclidiens et polynomiaux}
 	
+
+	
 	\section{Généralités sur les réseaux}
+	
+	
 	\subsection{Définitions et exemples}
 	Nous considérons un espace euclidien, c'est-à-dire un espace vectoriel réel de dimension finie muni d'un produit scalaire, noté $\langle f, g \rangle$. Ici, nous utiliserons le produit scalaire usuel, défini par $\langle f, g \rangle = f \cdot g^T$ lequel induit la norme-2, donnée par $\|f\|_2=(f \cdot f^T)^{1/2}$.
 	
-	\begin{definition}%%%%%%ùfinir cette def
-		Soit $n \in \mathbb{N}$. Z module reseau "euclidien"?
+	
+	Dans la littérature, on trouve les trois définitions suivantes d’un réseau euclidien.
+	\begin{definition}[\cite{MCA}]
+		Soit $n \in \mathbb{N}$ et $f_1, \cdots, f_n \in \mathbb{R}^n$.
+		
+		Alors $\mathcal{L} = \sum_{1 \leq i \leq n} \mathbb{Z} f_i
+		$ est un réseau euclidien
 	\end{definition}
 
-	\begin{definition}[\cite{clef_unique_1}]
+	\begin{definition}[\cite{Wallet}]
 		Un \textbf{réseau euclidien} est un sous-groupe discret de $\mathbb{R}^n$
 	\end{definition}
 
 	%pour etre discret faut une norme
 
 	\begin{definition}[\cite{clef_unique_2}]
-		Un réseau euclidien $(\Lambda, q)$ est un $\mathbb{Z}$-module libre $\Lambda$ de rang fini avec une forme quadratique définie positive $q$ sur $\Lambda \otimes_\mathbb{Z} \mathbb{R}$ 
+		Un \textbf{réseau euclidien} $(\Lambda, q)$ est un $\mathbb{Z}$-module libre $\Lambda$ de rang fini avec une forme quadratique définie positive $q$ sur $\Lambda \otimes_\mathbb{Z} \mathbb{R}$ 
 	\end{definition}
 	
 	%parler des reseaux polynomiauxEn remplacant Z par anneau de polynome, on a des reseaux polynomiaux.
@@ -220,7 +252,7 @@
 	
 	def d'un plus court vecteur
 	
-	\begin{definition}[\cite{clef_unique_1}]
+	\begin{definition}[\cite{Wallet}]
 		On appelle minimum d'un réseau $\mathcal{L}$ la quantité
 		
 		$$\lambda_1 = min\{r>0 : |\mathcal{B}(r)\cap\mathcal{L}|>1\} \in \mathbb{R_+}$$
@@ -275,11 +307,51 @@
 		
 	\section{Réduction de réseaux euclidiens et polynomiaux}
 	
+	
+	La réduction de réseaux est un outil fondamental en cryptographie et, plus généralement, en calcul formel. La réduction d'un réseau consiste à modifier une base quelconque de ce réseau en une base presque orthogonale. L'intérêt est de trouver de ``bonnes'' bases afin de résoudre divers problèmes.
+	
+	Nous avons deux résultats distincts concernant la réduction de réseaux euclidiens et polynomiaux :
+	
+	\begin{itemize}
+		\item La réduction de réseaux sur $\mathbb{F}[X]$ s'effectue en temps polynomial.
+		\item La réduction de réseaux sur $\mathbb{Z}$ est $\mathsf{NP}$-difficile.
+	\end{itemize}	
+	
 	\subsection{Réduction de réseaux euclidiens}
 	
 	\subsection{Réduction de réseaux polynomiaux}
+	Cette section sur la réduction des réseaux polynomiaux est fortement inspirée de \cite{CCLebreton}.  
 	
-	reseau reduit chap 16
+	La réduction des réseaux polynomiaux est un outil essentiel. Par exemple, elle peut être utilisée pour le décodage des codes de Reed-Solomon. Dans cette partie, nous présenterons les idées et les outils permettant de réduire les réseaux polynomiaux en temps polynomial, en nous appuyant sur les meilleurs exposants connus à ce jour.  
+	
+	Lorsque l'on travaille avec des matrices à coefficients dans un corps fini \(\mathbb{F}\), de nombreuses opérations ont des complexités équivalentes : la multiplication de matrices, l'inversion d'une matrice, le calcul du déterminant ou encore la résolution d'un système linéaire. Mais qu'en est-il lorsque les matrices ont leurs coefficients dans \(\mathbb{F}[X]\) ?  
+	
+	Dans ce cas, le calcul du déterminant est équivalent à la multiplication de matrices. D'autres opérations, comme l'ordonnancement des bases et la réduction de colonnes, restent également de complexité comparable. En revanche, l'inversion d'une matrice ne l'est plus, en raison de la taille de la sortie.
+	
+	
+	La base d'ordre est un concept imortant en travaillant avec les matrices polynomiales pour réduire beaucoup de problemes à la multiplicatiob
+	
+	Soit F un corps fii, F X <=d les polyonme sur F de degré <= d et F x m n les matrices m n avex coeff polynomiau
+	
+	slide 6
+	
+	
+	Soit $F \in \mathbb{F}[X]^{m \times n}$. On définit $(F, \sigma):= \{v \in \mathbb{F}^{1 \times m}$ tel que $ vF = 0$ mod $x^\sigma\}$
+	
+	\begin{proposition}
+		$(F, \sigma)$ est un $\mathbb{F}[X]$ module de dimension $m$.
+	\end{proposition}
+
+	preuve : Il faut montrer que c'est un sous-groupe additif stable pour la multiplication?
+	
+	
+	\begin{definition}
+		Une base d'ordre P de F $\sigma$
+		 est une base du F X module de F $\sigma$ de degré minimale
+	\end{definition}
+	
+	mais qsuelle est la notionn de dégré, quelle ets la notion d'ordre et de miniaité ?
+	
 	
 	\begin{definition}[\cite{clef_unique_0}]
 		Soit $\mathbb{K}$ un corps et $M \in \mathbb{K}[x]_{1 \times n}$. On définit le \textbf{degré de ligne} du vecteur ligne M par : 
@@ -306,12 +378,33 @@
 		
 	\end{example}
 	
+	Mais on a un problème
+	
 	\begin{definition}
 		Soit $s \in \mathbb{Z}^n$. On définit le degré de ligne décalé du vecteur ligne M par :
 		$$rdeg_s(M)=max(deg(m_i)+s_i\\)$$
 	\end{definition}
-
-	Je cite \cite{clef_unique_1}  je cite \cite{clef_unique_2} et puis \cite{clef_unique_3} et finalement \cite{clef_unique_4}
+	degré décalé d'une matrice
+	
+	exemple
+	
+	notation $x^s$
+	
+	remarque 2
+	
+	transitivité slide 12
+	
+	On va définir un ordre sur les row degree
+	
+	
+	
+	matrice row reduced def
+	
+	
+	pour parler d'un minimum faudrait un ordre total
+	
+	algo DAC
+	 je cite \cite{clef_unique_2} et puis \cite{clef_unique_3} et finalement \cite{clef_unique_4}
 	
 	\chapter{Adaptation de la réduction de réseaux polynomiaux au cas entier}
 	
@@ -324,10 +417,138 @@
 
 	\section{Définition et propriétés des groupes}
 	
+	
+	subsection Généralités
+	
+	definition
+	
+	exemple contre exemple
+	
+	
 	\section{Définition et propriétés des anneaux}
+	
+	\subsection{Généralités}
+	
+	\begin{definition}
+		Un \textbf{anneau} $(A, +, \cdot)$ est un ensemble : 
+		\begin{itemize}
+			\item muni d'une loi interne $+$ tel que $(M, +)$ est un groupe abélien.
+			\item muni d'une loi interne $A \times A \rightarrow A, (a, b) \mapsto a \cdot b$ qu'on notera $ab$ vérifiant les trois propriétés suivantes :
+			
+			\begin{enumerate}
+				\item $\cdot$ distributif sur $+$ :
+					\begin{itemize}
+						\item $a(b + c) = ab + ac$
+						\item $(b+c)a = ba+ca$
+					\end{itemize}
+				
+				
+				\item $\cdot$ est associatif
+				
+				\item $\cdot$ a un élément neutre
+			\end{enumerate}
+		\end{itemize}
+	\end{definition}
+
+	\begin{definition}
+		Un anneau $A$ est \textbf{commutatif} si $ab = ba$ pour tout $a$, $b \in A$
+	\end{definition}
+	
+	\begin{definition}
+		Un anneau $A$ est \textbf{intègre} si $ab=0 \Rightarrow a = 0$ ou $b = 0$ pour tout $a$, $b \in A$
+	\end{definition}
+
+	\begin{definition}
+		Soit $A$ un anneau. Un \textbf{idéal} $I$ de $A$ est un sous-ensemble de $A$ tel que
+		\begin{enumerate}
+			\item $I$ est un sous-groupe additif de $(A, +)$
+			\item pour tout $a \in A$, $x \in I$, on a $ax \in I$ et $xa \in I$
+		\end{enumerate}
+	\end{definition}
+
+	def anneau euclidien
+	
+	\begin{definition}
+		Un idéal est dit \textbf{principal} s'il est engendré par un élément. Un anneau A est dit \textbf{principal} si tous ses anneaux sont principaux.
+	\end{definition} 
+	
+		
+
+	def Anneau noetherien
+	
+	prop anneau noetherien
+	
+	
+	def anneau factoriek
+	
+	\begin{theoreme}
+		Tout anneau principal est factoriel.
+	\end{theoreme}
+	
+	
+	\begin{theoreme}
+		Tout anneau euclidien est principal
+	\end{theoreme}
+	
+	\begin{theoreme}
+		Tout anneau principal est noetherien
+	\end{theoreme}
+	
+	
+	\begin{theoreme}
+		ctout anneau commutatif intègre et principal est foactoriel
+	\end{theoreme}
+	
+	
+	
+
+	
+	
+	proposition des implications
+	schéma d'inclusion récap pq pas.
+	
+	\subsection{Anneaux de polynômes}
+	
+	Dans ce mémoire, les anneaux de polynômes constituent un type d'anneaux particulièrement utile.
+	
+	\begin{theoreme}
+	Si $A$ est un anneau factoriel, alors $A[X]$ est un anneau factoriel.
+	\end{theoreme}
+
+	\begin{remark}
+		Il s'en suit que $A[X, Y]$ est factoriel et ainsi de suite.
+	\end{remark}
+
+	\begin{theoreme}
+		Si $A$ est un anneau Noethérien, alors $A[X]$ est un anneau Noethérien.
+	\end{theoreme}
+	
+	\begin{remark}
+		Il s'en suit que $A[X, Y]$ est Noethérien et ainsi de suite.
+	\end{remark}
+
+	\begin{theoreme}
+		Si $A$ est un anneau factoriel, alors $A[X]$ est un anneau intègre.
+	\end{theoreme}
+	
+	\begin{remark}
+		Il s'en suit que $A[X, Y]$ est intègre et ainsi de suite.
+	\end{remark}
+
+	Si K corps K X principal je crois
+	
+	\begin{proposition}
+		$K[X]$ est principal.
+	\end{proposition}
+
+	\begin{proposition}
+		$K[X, Y]$ n'est pas principal.
+	\end{proposition}
+	
 	\section{Définition et propriétés des modules} %pq pas exmeple ?
 	
 	\subsection{Généralités}
+	Cette partie se base sur \cite{ring_modules} et \cite{harari_modules}.
 	
 	La notion de module est la généralisation naturelle de celle d'espace vectoriel. Dans toute la suite $A$ désigne un anneau commutatif.
 	
@@ -339,11 +560,11 @@
 			\item muni d'une loi externe $A \times M \rightarrow M, (a, m) \mapsto a \cdot m$, qu'on notera $am$ vérifiant les quatre propriétés suivantes :
 			\begin{enumerate}
 				\item Distributivité : $\alpha(m + m') = \alpha m + \alpha m'$
-				\item Distributivité : $(\alpha+b)m = \alpha m + \beta m$
+				\item Distributivité : $(\alpha+\beta)m = \alpha m + \beta m$
 				\item Associativité : $(\alpha \beta)m = \alpha(\beta m)$
 				\item Neutre : $1m = m$
 				
-				pour tout $\alpha$, $\beta \in Ala 3$ et $m$, $m' \in M$
+				pour tout $\alpha$, $\beta \in A$ et $m$, $m' \in M$
 			\end{enumerate}
 		\end{itemize}
 	\end{definition}
@@ -351,33 +572,50 @@
 	\begin{remark}
 		La définition d'un module peut être vue comme une généralisation de celle d'un espace vectoriel. En effet, un module est un espace vectoriel dans lequel l'hypothèse sur $A$ est affaiblie : au lieu d'être un corps, $A$ est un anneau, ici commutatif, on ne se soucie donc pas de la distinction entre modules à gauche ou à droite.
 	\end{remark}
+
+	%plus on affaibli les hypothèses plus l'objet est général et donc plus difficile à étudier
 	
+	\begin{example}
+		Soit $n \in \mathbb{N}$, $\mathbb{Z}/n \mathbb{Z}$ est un $\mathbb{Z}$-module.
+	\end{example}
+
 	\begin{definition}
-		Soit $M$ un $A$-module. Un sous-module $N$ de $M$ est un sous-groupe de $(M, +)$ stable pour la multiplication externe par tout élément de $A$.
+		Soit $M$ un $A$-module. Un \textbf{sous-module} $N$ de $M$ est un sous-groupe de $(M, +)$ stable pour la multiplication externe par tout élément de $A$.
 	\end{definition}
+
 	% contre exemple au fait d'etre stable pour la multiplication externe ?
 	
 	%exemple et contre-exemple de modules
 	
 	\begin{definition}
-		type fini
+		Un $A$-module $M$ est dit de \textbf{type fini} s'il existe une partie finie $S$ de $M$ tel que $M$ soit engendré par $S$.
 	\end{definition}
 
 	\begin{definition}
-		libre
+		Un $A$-module $M$ est dit \textbf{libre} s'il admet une base i.e. si il admet une famille $(x_i)_{i \in I}$ tel que pour tout $x \in M$, $x$ s'écrit de manière unique comme $\sum_{i \in I} \alpha_i x_i$
 	\end{definition}
 
+	\begin{proposition}
+		Si $M$ est libre et de type fini, alors il admet une base finie. On dit dans ce cas que $M$ est libre de type fini, et toutes les bases de $M$ ont le même cardinal, qu'on appelle rang de $M$.
+	\end{proposition}
 
-	proposition : libre et type fini => base finie
-	
-	exemples et contre-exemple
-	
-	%dire D	NS L'INTRO encore une fois que je vais donner des exemples et des contre exemple afin de mieux saisir les définitions
-	
-	%produit tensoriel
-	
+	\begin{example}
+		$\mathbb{Z}/n \mathbb{Z}$ est un $\mathbb{Z}$-module de type fini mais pas libre pour $n \neq 0$.
+	\end{example}
+		
 	\subsection{Modules sur un anneau principal}
-	Dans cette partie, A désigne un anneau principal.
+	Dans cette partie, $A$ désigne un anneau principal.
+	
+	\begin{theoreme}
+	Si M est un module libre sur un anneau principal A, tout sous-module de M est libre et de rang inférieur ou égal à celui de M.
+	\end{theoreme}
+
+
+	\begin{example}
+		Dans le $\mathbb{Z}$-module libre $\mathbb{Z}^2$, le sous-module des couples $(a, b)$ tels que $a \equiv b$ mod $10$ est libre de base $((1,1), (0, 10))$ donc de rang $2$ (comme le module lui-même).
+	\end{example}
+	
+	
 	
 	\chapter{Rappels d'algèbre linéaire}
 	
