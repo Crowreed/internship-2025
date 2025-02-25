@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.19)  24 FEB 2025 19:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.19)  25 FEB 2025 14:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -680,36 +680,73 @@ LaTeX Info: Redefining \addtolength on input line 81.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
 )
+(/usr/share/texlive/texmf-dist/tex/latex/lettrine/lettrine.sty
+File: lettrine.sty 2020-03-14 v2.23 (Daniel Flipo)
+
+(/usr/share/texlive/texmf-dist/tex/generic/minifp/minifp.sty
+Package: minifp 2013/12/30 v0.96. Macros for real number operations and a stack
+-based programing language.
+\MFP@loopctr=\count438
+)
+\c@DefaultLines=\count439
+\c@DefaultDepth=\count440
+\DefaultFindent=\dimen179
+\DefaultNindent=\dimen180
+\DefaultSlope=\dimen181
+\DiscardVskip=\dimen182
+\L@lbox=\box57
+\L@tbox=\box58
+\c@L@lines=\count441
+\c@L@depth=\count442
+\L@Pindent=\dimen183
+\L@Findent=\dimen184
+\L@Nindent=\dimen185
+\L@lraise=\dimen186
+\L@first=\dimen187
+\L@next=\dimen188
+\L@slope=\dimen189
+\L@height=\dimen190
+\L@novskip=\dimen191
+\L@target@ht=\dimen192
+\L@target@dp=\dimen193
+\L@target@tht=\dimen194
+\LettrineWidth=\dimen195
+\LettrineHeight=\dimen196
+\LettrineDepth=\dimen197
+\Llist@everypar=\toks37
+
+Loading lettrine.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/lettrine/lettrine.cfg))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'french'.
 LaTeX Font Info:    Trying to load font information for T1+ptm on input line 13
-0.
+3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -780,9 +817,9 @@ Package biblatex Warning: The following entry could not be found
 (biblatex)                LaTeX afterwards.
 
 )
-Package biblatex Info: Reference section=0 on input line 130.
-Package biblatex Info: Reference segment=0 on input line 130.
-Package hyperref Info: Link coloring OFF on input line 130.
+Package biblatex Info: Reference section=0 on input line 133.
+Package biblatex Info: Reference segment=0 on input line 133.
+Package hyperref Info: Link coloring OFF on input line 133.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -792,38 +829,38 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count438
+\c@section@level=\count443
 )
-LaTeX Info: Redefining \ref on input line 130.
-LaTeX Info: Redefining \pageref on input line 130.
-LaTeX Info: Redefining \nameref on input line 130.
+LaTeX Info: Redefining \ref on input line 133.
+LaTeX Info: Redefining \pageref on input line 133.
+LaTeX Info: Redefining \nameref on input line 133.
 
 (./report.out) (./report.out)
 \@outlinefile=\write5
 \openout5 = `report.out'.
 
-LaTeX Info: Redefining \degres on input line 130.
+LaTeX Info: Redefining \degres on input line 133.
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 130.
+(french.ldf)             reported on input line 133.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 130.
-LaTeX Info: Redefining \up on input line 130.
+(french.ldf)             reported on input line 133.
+LaTeX Info: Redefining \up on input line 133.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count439
-\scratchdimen=\dimen179
-\scratchbox=\box57
-\nofMPsegments=\count440
-\nofMParguments=\count441
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count442
-\MPscratchDim=\dimen180
-\MPnumerator=\count443
-\makeMPintoPDFobject=\count444
-\everyMPtoPDFconversion=\toks38
+\scratchcounter=\count444
+\scratchdimen=\dimen198
+\scratchbox=\box59
+\nofMPsegments=\count445
+\nofMParguments=\count446
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count447
+\MPscratchDim=\dimen199
+\MPnumerator=\count448
+\makeMPintoPDFobject=\count449
+\everyMPtoPDFconversion=\toks39
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -836,15 +873,15 @@ e
 <logo/logo_LIRMM.jpg, id=92, 1144.275pt x 409.53pt>
 File: logo/logo_LIRMM.jpg Graphic file (type jpg)
 <use logo/logo_LIRMM.jpg>
-Package pdftex.def Info: logo/logo_LIRMM.jpg  used on input line 138.
+Package pdftex.def Info: logo/logo_LIRMM.jpg  used on input line 141.
 (pdftex.def)             Requested size: 159.33821pt x 57.02136pt.
 <logo/logo_univ_mpt.png, id=93, 200.75pt x 200.75pt>
 File: logo/logo_univ_mpt.png Graphic file (type png)
 <use logo/logo_univ_mpt.png>
-Package pdftex.def Info: logo/logo_univ_mpt.png  used on input line 142.
+Package pdftex.def Info: logo/logo_univ_mpt.png  used on input line 145.
 (pdftex.def)             Requested size: 91.04742pt x 91.05038pt.
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 16
-1.
+4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -868,17 +905,31 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.188 	\chapter
+l.191 	\chapter
                *{Notations} [1
 
 ] [2
 
-] [3
+]
+Package lettrine.sty Info: Targeted height = 20.67395pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 21.88106pt (\textbf {D});
+(lettrine.sty)             reported on input line 211.
+ [3
 
-] [4
+]
+Package lettrine.sty Info: Targeted height = 20.67395pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 21.88106pt (\textbf {L});
+(lettrine.sty)             reported on input line 217.
+ [4
 
 ]
 Chapitre 1.
+Package lettrine.sty Info: Targeted height = 20.67395pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 21.88106pt (\textbf {L});
+(lettrine.sty)             reported on input line 223.
 [5
 
 ]
@@ -892,13 +943,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [6]
 
-LaTeX Warning: Citation 'clef_unique_0' on page 7 undefined on input line 356.
-
-
-LaTeX Warning: Citation 'clef_unique_0' on page 7 undefined on input line 361.
-
-
-LaTeX Warning: Citation 'clef_unique_4' on page 7 undefined on input line 407.
+LaTeX Warning: Citation 'clef_unique_0' on page 7 undefined on input line 382.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -909,20 +954,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.13202pt}.
 
 [7]
-Chapitre 2.
-[8
 
-]
-Chapitre 3.
-[9
+LaTeX Warning: Citation 'clef_unique_0' on page 8 undefined on input line 387.
 
-] [10
 
-]
-Annexe A.
-[11
+LaTeX Warning: Citation 'clef_unique_4' on page 8 undefined on input line 433.
 
-]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.13202pt, for example:
@@ -931,7 +968,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-3.13202pt}.
 
-[12]
+[8]
+Chapitre 2.
+[9
+
+]
+Chapitre 3.
+[10
+
+] [11
+
+]
+Annexe A.
+[12
+
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.13202pt, for example:
@@ -941,33 +992,47 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.13202pt}.
 
 [13]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.13202pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.13202pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-3.13202pt}.
+
+[14]
 Annexe B.
 
-Underfull \hbox (badness 10000) in paragraph at lines 634--635
+Underfull \hbox (badness 10000) in paragraph at lines 660--661
 
  []
 
-[14
+[15
 
 ]
 Annexe C.
-[15
+[16
 
-] [16
+] [17
 
 ] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 5EB8C665908031F6DB68C65B2E414AD4;5046.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21207 strings out of 480218
- 362910 string characters out of 5894882
- 1099437 words of memory out of 5000000
- 38786 multiletter control sequences out of 15000+600000
- 515344 words of font info for 78 fonts, out of 8000000 for 9000
+ 21632 strings out of 480218
+ 368496 string characters out of 5894882
+ 1107083 words of memory out of 5000000
+ 39196 multiletter control sequences out of 15000+600000
+ 521435 words of font info for 82 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,12n,68p,739b,1827s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -983,10 +1048,10 @@ sy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (17 pages, 265928 bytes).
+Output written on report.pdf (18 pages, 270715 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 299 compressed objects within 3 object streams
- 97 named destinations out of 1000 (max. 500000)
+ 358 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
  187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

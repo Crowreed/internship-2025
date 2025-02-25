@@ -113,6 +113,9 @@
 \usepackage{titlesec}
 \usepackage{calc}
 \usepackage{times}
+\usepackage{lettrine}
+
+
 \titleformat
 {\chapter} % command
 [display] % shape
@@ -188,10 +191,13 @@
 	\chapter*{Notations}
 	\addcontentsline{toc}{chapter}{Notations}  % Ajoute au sommaire si nécessaire
 	
+	Cette section est conçue comme un lexique dans lequel sont répertorié les notations de ce mémoire.
+	
 	\begin{itemize}[label={}]
 		\item $\mathbb{Z}$ : L'ensemble des entiers relatifs.
 		\item $\mathbb{R}$ : L'ensemble des réels.
 		\item $\mathcal{L}$ : Un réseau, désigné par une lettre majuscule calligraphiée.
+		\item $\mathcal{L}(B)$ le réseau engendré par la matrice $B$.
 		\item $A^T$ : La transposée de la matrice $A$.
 		\item $\mathbb{K}$ : Un corps quelconque.
 		\item $\mathbb{F}$ : Un corps fini.
@@ -202,19 +208,19 @@
 	\chapter*{Guide de Lecture}
 	\addcontentsline{toc}{chapter}{Guide de Lecture}
 	
-	Dans ce mémoire, chaque définition est suivie d'un exemple concret illustrant la notion en question, ainsi que d'un contre-exemple visant à en exposer les subtilités et les exceptions éventuelles. Cette approche permet de mieux comprendre les conditions et les limitations associées à chaque concept. L'objectif est de clarifier les différences entre les situations où une définition est applicable et celles où elle ne l'est pas, afin de renforcer la compréhension approfondie des théorèmes et des constructions présentés.
+		\lettrine{\textbf{D}}{ans} ce mémoire, chaque définition est suivie d'un exemple concret illustrant la notion en question, ainsi que d'un contre-exemple visant à en exposer les subtilités et les exceptions éventuelles. Cette approche permet de mieux comprendre les conditions et les limitations associées à chaque concept. L'objectif est de clarifier les différences entre les situations où une définition est applicable et celles où elle ne l'est pas, afin de renforcer la compréhension approfondie des théorèmes et des constructions présentés.
 	
 
 	
 	\chapter*{Introduction}
 	
-	L'objectif de ce stage est d'explorer les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau. L'enjeu est d'adapter les méthodes de réduction utilisées dans le cadre des réseaux polynomiaux au cas des réseaux entiers.
+	\lettrine{\textbf{L}}{'objectif} de ce stage est d'explorer les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau. L'enjeu est d'adapter les méthodes de réduction utilisées dans le cadre des réseaux polynomiaux au cas des réseaux entiers.
 	
 	La réduction de réseau est un outil essentiel dans plusieurs domaines de la cryptographie, notamment dans les algorithmes de sécurité basés sur la difficulté de résoudre des problèmes liés aux réseaux. En particulier, la réduction de réseaux polynomiaux est connue de manière polynomiale, et l'adaptation de ces méthodes pour les réseaux entiers pourrait avoir des implications importantes pour la sécurité des systèmes cryptographiques. Ce stage vise donc à approfondir cette adaptation et à en étudier les applications pratiques.	
 	
 	\chapter{Réseaux euclidiens et polynomiaux}
 	
-
+	\lettrine{\textbf{L}}{'étude} des réseaux euclidiens en mathématiques trouve ses origines au XVIIIe siècle, lorsque Leonhard Euler a exploré les structures géométriques des points dans l'espace. Toutefois, ce n'est que dans le courant du XXe siècle que le concept de réseaux euclidiens a été intégré à la cryptographie. Dans les années 1990, des chercheurs tels qu'Ajtai, Dwork, Regev et d'autres ont introduit l'idée des réseaux euclidiens comme fondement de problèmes complexes en cryptographie, ouvrant ainsi la voie à de nouvelles constructions cryptographiques.
 	
 	\section{Généralités sur les réseaux}
 	
@@ -223,7 +229,8 @@
 	Nous considérons un espace euclidien, c'est-à-dire un espace vectoriel réel de dimension finie muni d'un produit scalaire, noté $\langle f, g \rangle$. Ici, nous utiliserons le produit scalaire usuel, défini par $\langle f, g \rangle = f \cdot g^T$ lequel induit la norme-2, donnée par $\|f\|_2=(f \cdot f^T)^{1/2}$.
 	
 	
-	Dans la littérature, on trouve les trois définitions suivantes d’un réseau euclidien.
+	Dans la littérature, on trouve les trois définitions suivantes d’un réseau euclidien qui représentent le même objet.
+	
 	\begin{definition}[\cite{MCA}]
 		Soit $n \in \mathbb{N}$ et $f_1, \cdots, f_n \in \mathbb{R}^n$.
 		
@@ -235,31 +242,45 @@
 		Un \textbf{réseau euclidien} est un sous-groupe discret de $\mathbb{R}^n$
 	\end{definition}
 
-	%pour etre discret faut une norme
-
 	\begin{definition}[\cite{clef_unique_2}]
 		Un \textbf{réseau euclidien} $(\Lambda, q)$ est un $\mathbb{Z}$-module libre $\Lambda$ de rang fini avec une forme quadratique définie positive $q$ sur $\Lambda \otimes_\mathbb{Z} \mathbb{R}$ 
 	\end{definition}
 	
-	%parler des reseaux polynomiauxEn remplacant Z par anneau de polynome, on a des reseaux polynomiaux.
+	Soit $\mathcal{L}$ un réseau euclidien. Il existe une famille $\mathbb{Z}$-libre maximale $(b_i)_{1 \leq i \leq n}$ dans $\mathcal{L}$ tel que $\mathcal{L} = Zb_1 \oplus \cdots \oplus Zb_n$, qu'on appelle \textbf{base du réseau} $\mathcal{L}$, si on note $B$ la matrice des $(b_i)$ on notera $L(B)$ le réseau de base $B$, donc engendré par les $(b_i)$.
 	
-	%Ces définitions sont équivalentes??
+	L'entier $n$ est commun à toutes les bases de $L$ et on l'appelle rang de $L$. Lorsque $n=m$, on dit que le réseau est de rang plein.
+	
+	\begin{proposition}%Wallet
+		Soit $L$ et $L'$ deux réseaux de rang $n$ de base $B$ et $B'$.
+		
+		Alors $L$ = $L'$ si et seulement si $\exists U \in M_n(\mathbb{Z})$ tel que $B'=BU$ et $U \in GL_n(\mathbb{Z})$
+	\end{proposition}
+	
+	\begin{definition}
+		La taille d'un réseau $L(B)$ est $det(B)$ et est noté $\|L\|$. La taille d'un réseau est indépendant de la base choisie.
+	\end{definition} 
+	
+	En substituant $\mathbb{Z}$ par un anneau de polynômes, on obtient ce qu'on appelle les réseaux polynomiaux.
 	
 	\begin{example}
 		
 	\end{example}
-	def de la base d'un reseau
-	
-	def d'un plus court vecteur
-	
 	\begin{definition}[\cite{Wallet}]
-		On appelle minimum d'un réseau $\mathcal{L}$ la quantité
+		On appelle \textbf{minimum d'un réseau} $\mathcal{L}$ la quantité
 		
 		$$\lambda_1 = min\{r>0 : |\mathcal{B}(r)\cap\mathcal{L}|>1\} \in \mathbb{R_+}$$
 	\end{definition}
 	
 	
-	problematique -> differentes bases -> des bases avec de cours vecteurs,
+	On a vu que différentes bases peuvent être associées à un même réseau. Existe-t-il une notion de "bonne base" ? Nous verrons qu'une base idéale est celle qui est la plus orthogonale possible. Cette question est en lien avec des problèmes ouverts majeurs, tels que leShortest Vector Problem (SVP) et le closest vector problem 
+	 (CVP).
+	\begin{example}
+		Les bases $B = \left(\begin{array}{rr}1 & 0 \\0 & 1\end{array}\right)$ et $B'=\left(\begin{array}{rr}1 & -1 \\-2 & 1\end{array}\right)$ engendrent le même réseau.
+		
+		Ici $U = B'^{-1} = \left(\begin{array}{rr}-1 & -1 \\-2 & -1\end{array}\right)$ et on voit que $det(U)=-1$. Donc $B$ et $B'$ engendrent le même réseau $\mathcal{L}$.
+		
+		On a $\|L\| = 1$ et $\lambda_1( \mathcal{L}) = 1$
+	\end{example}
 	
 	\subsection{Quelques problèmes algorithmiques liés aux réseaux euclidiens}
 	
@@ -318,6 +339,11 @@
 	\end{itemize}	
 	
 	\subsection{Réduction de réseaux euclidiens}
+	
+	\subsubsection{Généralités}
+	
+	parler de notion de base réduite
+	\subsubsection{LLL}
 	
 	\subsection{Réduction de réseaux polynomiaux}
 	Cette section sur la réduction des réseaux polynomiaux est fortement inspirée de \cite{CCLebreton}.  
