@@ -84,10 +84,29 @@
 \theoremstyle{theoremstyle}
 \newtheorem{theoreme}{Théorème}[chapter]  % Numérotation par chapitre
 
+% Définition d'un nouveau style de théorème pour les preuves
+\newtheoremstyle{proofstyle}  
+{10pt}                        % Espace avant
+{10pt}                        % Espace après
+{\normalfont}                 % Police normale pour le texte
+{}                            % Pas de retrait
+{\itshape}                    % Titre en italique
+{.}                           % Ponctuation après le titre
+{1em}                         % Espace après le titre
+{}                            % Pas d'autres spécifications
+
+% Appliquer le style à l'environnement de preuve
+\theoremstyle{proofstyle}
+\newtheorem{preuve}{Preuve}[chapter]  % Numérotation par chapitre
+
+% Définition de l'environnement de preuve avec le carré à la fin
+\newenvironment{preuveenv}{\begin{proof}[Preuve]}{\qed\end{proof}}
 
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry} % Définition des marges du document (A4 avec 2.5 cm sur chaque côté)
 
 \usepackage[backend=biber,style=authoryear]{biblatex} % Gestion de la bibliographie
+\setlength{\bibitemsep}{1\baselineskip}  % Ajuste l'espacement entre les éléments de la bibliographie
+
 \addbibresource{references.bib} % On inclue le fichier BibTeX references
 
 \usepackage{fancyhdr}     % En-têtes et pieds de page personnalisés
@@ -114,8 +133,42 @@
 \usepackage{calc}
 \usepackage{times}
 \usepackage{lettrine}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}  % À mettre dans le préambule
+\usepackage{listings}
+\renewcommand\qedsymbol{$\blacksquare$}
 
+\usepackage{listings}
+\usepackage{xcolor}  % pour utiliser les couleurs
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+	\lstset{language=Python}
 \titleformat
 {\chapter} % command
 [display] % shape
@@ -185,8 +238,11 @@
 	
 	%\chapter*{Remerciements}
 	% à rédiger à la fin
+	\tableofcontents % Table des matières
 	
-	\tableofcontents
+	\renewcommand{\listalgorithmname}{Table des algorithmes}
+	\listofalgorithms % Table des algorithmes
+	
 	
 	\chapter*{Notations}
 	\addcontentsline{toc}{chapter}{Notations}  % Ajoute au sommaire si nécessaire
@@ -342,8 +398,45 @@
 	
 	\subsubsection{Généralités}
 	
-	parler de notion de base réduite
-	\subsubsection{LLL}
+	\begin{definition}{\cite{MCA}}
+		Soit $f_1, \cdots, f_n \in \mathbb{R}^n$ une base et $f_1^*, \cdots, f_n^*\in\mathbb{R}^n$ sa base de Gram-Schmidt associée.
+		
+		On dit que $(f_1, \cdots, f_n)$ est \textbf{réduite} si $\|f_i^*\|^2 \leq 2 \| f_{i+1}^*\|^2$ pour $1 \leq i \leq n$ 
+	\end{definition}
+	
+	L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe simple : il calcule la meilleure approximation entière de la décomposition de Gram-Schmidt et réduit la base en réorganisant les vecteurs si nécessaire. Cet algorithme est décrit dans \cite{MCA}.
+	
+	Le code complet de l'algorithme est présenté dans l'annexe \ref{sec:annexe_code}.
+	\begin{algorithm}
+		\caption{BasisReduction (LLL) \cite{MCA}}
+		\label{algo:LLL_MCA} 
+		\ref{algo:LLL_MCA}
+			
+		\begin{algorithmic}[1]
+			\State \textbf{Entrée :} Une base $B=(f_1, \cdots, f_n)$
+			\State \textbf{Sortie :} Une base réduite $G=(g_1, \cdots, g_n)$ de $B$
+			\For{$i = 1$ \textbf{à} $n$}
+				\State $g_i \coloneqq f_i$
+			\EndFor
+			
+			\State $(B^*, U)\coloneqq$ GSO$(B)$
+			
+			\While{$i \leq n$}
+			\For{$j=i-1, i-2$ \textbf{à} $1$}
+			\State $g_i:=gi-\lfloor \mu_{ij} \rceil g_j$
+			\State Mettre à jour $(B^*, U)\coloneqq$ GSO$(B)$
+			\EndFor
+			\If{$i>1$ et $\|f_i^*\|^2 > 2 \| f_{i+1}^*\|^2$}
+			\State échanger $g_{i-1}$ et $g_i$
+			\State Mettre à jour $(B^*, U)\coloneqq$ GSO$(B)$
+			\State $i \coloneqq i-1$ 
+			\Else 
+			\State $i \coloneqq i+1$
+			\EndIf
+			\EndWhile
+			\State Retourner $G=(g_1, \cdots, g_n)$
+		\end{algorithmic}
+	\end{algorithm}
 	
 	\subsection{Réduction de réseaux polynomiaux}
 	Cette section sur la réduction des réseaux polynomiaux est fortement inspirée de \cite{CCLebreton}.  
@@ -438,6 +531,22 @@
 	\chapter*{Conclusion et perspectives}
 	
 	\appendix
+	
+	\titleformat
+	{\chapter} % command
+	[display] % shape
+	{\Large} % format
+	{%
+		\rule{\widthof{ANNEXE}}{0.6pt}\vspace{-0.3cm}\\
+		\makebox[0pt][l]{ANNEXE \Huge\textbf{\thechapter}}\vspace{-0.6cm} \\
+		\rule{\widthof{ANNEXE \Huge\textbf{\thechapter}}}{0.6pt}
+	} % label
+	{1ex} % sep
+	{\huge\textit } 
+	[
+	] % after-code
+	
+	
 	%rajouter des corps ?
 	\chapter{Rappels d'algèbre : Groupes, Anneaux et Modules}
 
@@ -645,11 +754,13 @@
 	
 	\chapter{Rappels d'algèbre linéaire}
 	
+	Dans ce mémoire, les matrices sont considérées comme des matrices dont les éléments sont des vecteurs ligne.
+	
 	% demander à Romain si je met GS ici ou ailleurs
 	
 	\section{Orthonormalisation de Gram-Schmidt (GSO)}
 	
-	On se considère dans un espace euclidien. Soit \( B = (b_i)_{1 \leq i \leq n} \) une base de \( \mathbb{R}^n \), on peut construire la \textbf{base de Gram-Schmidt (GS)} associée à cette base par le procédé récursif suivant :
+	On se considère dans un espace euclidien $\mathbb{R}^n$. Soit \( B = (b_i)_{1 \leq i \leq n} \) une base de \( \mathbb{R}^n \), on peut construire la \textbf{base de Gram-Schmidt (GS)} associée à cette base, que l'on notera \( B^* = (b^*_i)_{1 \leq i \leq n} \) par le procédé récursif suivant :
 	
 	
 	$$b_1^* := b_1$$
@@ -659,28 +770,87 @@
 	
 	où \( \mu_{i,j} \) est appelé \textbf{coefficient de Gram-Schmidt} associé au vecteur \( b_i \). \\
 	
-	Notons \( B^* \) la matrice des \( b_i^* \), et \( U \) la matrice des \( \mu_{i,j} \). Alors, on a la relation :
-	
-	$$B = B^* U$$
+	Notons \( B^* \) la matrice des \( b_i^* \), et \( U = \left(\begin{array}{rrrr}
+		1 & 0 & \cdots & 0\\
+		\mu_{2,1} & \ddots & \ddots & \vdots\\
+		\vdots & \ddots & \ddots & 0\\
+		\mu_{n,1} & \cdots & \mu_{n,n-1} & 1
+	\end{array}\right)\). 
+
+Alors, on a la relation : $B = UB^*$
 	
 	 \begin{remark}
 	 	\begin{itemize}
 	 		\item  $U$ est triangulaire avec un déterminant égal à $1$.
-	 		\item On ne normalise pas, sinon cela introduit des racines et on risque de passer de \( \mathbb{Q} \) à \( \mathbb{R} \setminus \mathbb{Q} \). De plus, la normalisation impose un volume de $1$ et ne conserve donc pas l'information volumique du réseau associé.
+	 		\item Contrairement à ce qui est souvent pratiqué dans la littérature, nous n'effectuons pas de normalisation, car cela introduirait des racines, ce qui pourrait entraîner un passage des coefficients \( \mathbb{Q} \) à des coefficients \( \mathbb{R} \setminus \mathbb{Q} \). De plus, la normalisation impose un volume égal à 1, ce qui entraîne une perte de l'information volumétrique du réseau associé.
+	 		
 	 	\end{itemize}
  	\end{remark}
 	
 	
 	\begin{proposition}
-		\begin{itemize}
-			\item Conservation du volume : \( \det L = \prod \| b_i^* \| \).
-			\item Propriété du plus petit vecteur** : \( \lambda_1(\mathcal{L}) \geq \min \| b_i^* \| \).
-		\end{itemize}
+		 Soit $B = (b_i)_{1 \leq i \leq n}$ une base de $\mathbb{R}^n$, et $B^* = (b^*_i)_{1 \leq i \leq n}$ sa base de Gram-Schmidt associée.
+		 
+		 On a $det(B)=det(B^*) = \prod \| b_i^*\|$
 	\end{proposition}	
+
+	\begin{proof}
+		Nous utilisons le fait que \( U \) est une matrice triangulaire dont les coefficients diagonaux sont égaux à 1, et que \( B^* \) est une base de vecteurs orthogonaux. Ainsi, 
+		\[\det(B) = \det(UB^*) = \det(U)\det(B^*) = \det(B^*) = \prod \| b_i^*\|.\]
+	\end{proof}
 	
-	Le coût de l'algorithme de Gram-Schmidt (GSO) est en \( O(n^3) \) opérations arithmétiques dans \( \mathbb{Q} \).
+	
+	%	\item Propriété du plus petit vecteur** : \\lambda_1(\mathcal{L}) \geq \min \| b_i^* \| \)
+	
+	
+	\begin{algorithm}
+		\caption{GramSchmidt (GSO)}
+		\label{alg:GSO} 
+		\ref{alg:GSO}
+		
+		\begin{algorithmic}[1]
+			\State \textbf{Entrée :} Une base $B=(f_1, \cdots, f_n)$
+			\State \textbf{Sortie :} La base de Gram-Schmidt associée $B^*=(b^*_1, \cdots, b^*_n)$ et $U$ la matrice des coefficients de GS
+			
+			\For{$k = 1$ \textbf{à} $n$}
+			\State $b_k^* \coloneqq b_k$
+			\For{$j = 1$ \textbf{à} $k$}
+			\State $U_{kj}\coloneqq \frac{(b_k*b_j^*)}{\|b_j^*\|^2}$
+			\State $b_k^* \coloneqq U_{kj} b_j^*$
+			\EndFor
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{theoreme}
+		Le coût de l'algorithme \nameref{alg:GSO} est de \( O(n^3) \) opérations arithmétiques dans \( \mathbb{Q} \).
+	\end{theoreme}
+	
 	
 	\chapter{Code SageMath}
+	Le code source complet est également disponible sur \url{https://github.com/toncompte/tonrepo}.
+	\label{sec:annexe_code}
+	Voici le code complet de l'algorithme implémenté :
+	
+	\begin{lstlisting}
+	def Gram_Schmidt(B):
+	n = B.nrows()
+	
+	B_star = Matrix(QQ, n, n)
+	U = identity_matrix(QQ, n)
+	
+	B_star[0] = B[0]
+	
+	for k in range(1, n):
+	B_star[k] = B[k]
+	for j in range(k):g
+	U[k, j] = (B[k] * B_star[j]) / (B_star[j] * B_star[j])
+	B_star[k] -= U[k, j]*B_star[j]
+	return U, B_star
+	
+	\end{lstlisting}
+	
+	
+	
 
 	
 	\printbibliography
