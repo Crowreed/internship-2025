@@ -141,6 +141,7 @@
 
 \usepackage{listings}
 \usepackage{xcolor}  % pour utiliser les couleurs
+\usepackage{ragged2e}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -244,100 +245,182 @@
 	\listofalgorithms % Table des algorithmes
 	
 	
-	\chapter*{Notations}
-	\addcontentsline{toc}{chapter}{Notations}  % Ajoute au sommaire si nécessaire
+\chapter*{Notations, complexité et acronymes}
+\addcontentsline{toc}{chapter}{Notations, complexité et acronymes}
 	
-	Cette section est conçue comme un lexique dans lequel sont répertorié les notations de ce mémoire.
+Cette section fait office de lexique et recense l'ensemble des notations et acronymes utilisées tout au long de ce mémoire.
 	
-	\begin{itemize}[label={}]
-		\item $\mathbb{Z}$ : L'ensemble des entiers relatifs.
-		\item $\mathbb{R}$ : L'ensemble des réels.
-		\item $\mathcal{L}$ : Un réseau, désigné par une lettre majuscule calligraphiée.
-		\item $\mathcal{L}(B)$ le réseau engendré par la matrice $B$.
-		\item $A^T$ : La transposée de la matrice $A$.
-		\item $\mathbb{K}$ : Un corps quelconque.
-		\item $\mathbb{F}$ : Un corps fini.
-		\item $\mathbb{F}[X]$ : L'anneau des polynômes univariés à coefficients dans le corps fini $F$.
-	\end{itemize}
+\section*{\textit{Notations}}
+			
+\begin{tabular}{@{}p{3cm}p{12cm}@{}}
+	$\mathbb{Z}$ & L'ensemble des entiers relatifs.\\
+	$\mathbb{Q}$ & L'ensemble des rationnels.\\
+	$\mathbb{R}$ & L'ensemble des réels.\\
+	$\mathcal{L}$ & Un réseau, désigné par une lettre majuscule calligraphiée.\\
+	$\mathcal{L}($B$)$ & Le réseau engendré par la matrice $B$.\\
+	$A^T$ & La transposée de la matrice $A$.\\
+	B$^*$ & la base de Gram-Schmidt associée à $B$.\\
+	$\mathbb{K}$ & Un corps quelconque.\\
+	$\mathbb{F}$ & Un corps fini.\\
+	$\mathbb{F}[X]$ & L'anneau des polynômes uni variés à coefficients dans le corps fini $\mathbb{F}$.\\
+	$\mathbb{F}_{\leq d}[X]$ & les polynôme sur $\mathbb{F}$ de degré inférieur ou égal $d$.\\
+	$\mathbb{F}[X]^{m\times n}$ & les matrices $m\times n$ à coefficients dans $\mathbb{F}[X]$.\\
+\end{tabular}
 	
+\section*{\textit{Complexité}}
+
+
+\begin{tabular}{@{}p{5cm}p{12cm}@{}}
+	Multiplication dans $\mathbb{F}_{\leq d}[X]$ & $M(d) = \mathcal{O}(d \log d \log \log d)$.\\
+	Multiplication dans $\mathbb{F}^{n\times n}$ & $MM(n) = \mathcal{O}(n^\omega)$, où $\omega$ est l'exposant de la multiplication matricielle.\\
+	Multiplication dans $\mathbb{F}[X]_{\leq d}^{m\times n}$ & $MM(n,d) = \mathcal{O}(\text{MM}(n) M(d)) = \tilde{O}(n^\omega d)$.\\
+\end{tabular}
+
+\textbf{Note} : $MM(n,d)$ peut également être obtenu via une approche d'évaluation-interpolation sur une suite géométrique, ce qui permet d'améliorer certaines bornes de complexité.
+
+
+
+	\section*{\textit{Acronymes}}
 	
+	\begin{tabular}{@{}p{3cm}p{10cm}@{}}
+		\textbf{LLL} & Lenstra–Lenstra–Lovász\\
+		\textbf{BKZ} & Block Korkine-Zolotarev\\
+		\textbf{SVP} & Shortest Vector Problem\\
+		\textbf{CVP} & Closest Vector Problem
+	\end{tabular}
+
 	\chapter*{Guide de Lecture}
 	\addcontentsline{toc}{chapter}{Guide de Lecture}
 	
 		\lettrine{\textbf{D}}{ans} ce mémoire, chaque définition est suivie d'un exemple concret illustrant la notion en question, ainsi que d'un contre-exemple visant à en exposer les subtilités et les exceptions éventuelles. Cette approche permet de mieux comprendre les conditions et les limitations associées à chaque concept. L'objectif est de clarifier les différences entre les situations où une définition est applicable et celles où elle ne l'est pas, afin de renforcer la compréhension approfondie des théorèmes et des constructions présentés.
-	
-
-	
+		
 	\chapter*{Introduction}
 	
-	\lettrine{\textbf{L}}{'objectif} de ce stage est d'explorer les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau. L'enjeu est d'adapter les méthodes de réduction utilisées dans le cadre des réseaux polynomiaux au cas des réseaux entiers.
-	
-	La réduction de réseau est un outil essentiel dans plusieurs domaines de la cryptographie, notamment dans les algorithmes de sécurité basés sur la difficulté de résoudre des problèmes liés aux réseaux. En particulier, la réduction de réseaux polynomiaux est connue de manière polynomiale, et l'adaptation de ces méthodes pour les réseaux entiers pourrait avoir des implications importantes pour la sécurité des systèmes cryptographiques. Ce stage vise donc à approfondir cette adaptation et à en étudier les applications pratiques.	
-	
-	\chapter{Réseaux euclidiens et polynomiaux}
-	
-	\lettrine{\textbf{L}}{'étude} des réseaux euclidiens en mathématiques trouve ses origines au XVIIIe siècle, lorsque Leonhard Euler a exploré les structures géométriques des points dans l'espace. Toutefois, ce n'est que dans le courant du XXe siècle que le concept de réseaux euclidiens a été intégré à la cryptographie. Dans les années 1990, des chercheurs tels qu'Ajtai, Dwork, Regev et d'autres ont introduit l'idée des réseaux euclidiens comme fondement de problèmes complexes en cryptographie, ouvrant ainsi la voie à de nouvelles constructions cryptographiques.
-	
-	\section{Généralités sur les réseaux}
+\begin{justify}
+	\lettrine{\textbf{L}}{'objectif} de ce stage est d'explorer les réseaux euclidiens et polynomiaux, ainsi que d'analyser les techniques de réduction de réseau. Plus précisément, il s'agit d'adapter les méthodes de réduction développées pour les réseaux polynomiaux au cas des réseaux entiers, afin d'en évaluer l'efficacité et les implications. La réduction de réseau est un outil fondamental en cryptographie, notamment dans les algorithmes de sécurité reposant sur la difficulté de résoudre certains problèmes liés aux réseaux. En particulier, la réduction des réseaux polynomiaux est bien comprise et s'effectue en temps polynomial. L'adaptation de ces techniques aux réseaux entiers pourrait donc avoir un impact significatif sur la sécurité des systèmes cryptographiques, justifiant ainsi une étude approfondie de cette transition et de ses applications pratiques. Par ailleurs, les réseaux euclidiens constituent une approche émergente en cryptographie. Aujourd’hui, la sécurité des systèmes cryptographiques repose principalement sur la difficulté de la factorisation des grands nombres premiers et du calcul de logarithmes discrets. Cependant, ces hypothèses sont menacées par les avancées de l’informatique quantique. À l’inverse, les réseaux euclidiens offrent une alternative prometteuse pour la cryptographie post-quantique, car plusieurs de leurs problèmes fondamentaux semblent résister aux attaques quantiques. Un exemple emblématique est l’algorithme de réduction de bases LLL, qui a permis de briser plusieurs schémas cryptographiques, notamment ceux fondés sur le problème du sac à dos. Pourtant, ce même algorithme joue également un rôle clé dans la conception de nouveaux protocoles sécurisés, en exploitant la complexité intrinsèque des réseaux euclidiens pour garantir la robustesse des schémas cryptographiques.
+\end{justify}
 	
 	
-	\subsection{Définitions et exemples}
-	Nous considérons un espace euclidien, c'est-à-dire un espace vectoriel réel de dimension finie muni d'un produit scalaire, noté $\langle f, g \rangle$. Ici, nous utiliserons le produit scalaire usuel, défini par $\langle f, g \rangle = f \cdot g^T$ lequel induit la norme-2, donnée par $\|f\|_2=(f \cdot f^T)^{1/2}$.
-	
-	
-	Dans la littérature, on trouve les trois définitions suivantes d’un réseau euclidien qui représentent le même objet.
-	
-	\begin{definition}[\cite{MCA}]
-		Soit $n \in \mathbb{N}$ et $f_1, \cdots, f_n \in \mathbb{R}^n$.
-		
-		Alors $\mathcal{L} = \sum_{1 \leq i \leq n} \mathbb{Z} f_i
-		$ est un réseau euclidien
-	\end{definition}
+\chapter{Réseaux euclidiens et polynomiaux}
 
-	\begin{definition}[\cite{Wallet}]
-		Un \textbf{réseau euclidien} est un sous-groupe discret de $\mathbb{R}^n$
-	\end{definition}
+\lettrine{\textbf{L}}{'étude} des réseaux euclidiens en mathématiques trouve ses origines au XVIIIe siècle, lorsque Leonhard Euler a exploré les structures géométriques des points dans l'espace. Toutefois, ce n'est que dans le courant du XXe siècle que le concept de réseaux euclidiens a été intégré à la cryptographie. Dans les années 1990, des chercheurs tels qu'Ajtai, Dwork, Regev et d'autres ont introduit l'idée des réseaux euclidiens comme fondement de problèmes complexes en cryptographie, ouvrant ainsi la voie à de nouvelles constructions cryptographiques.
+	
+\section{Généralités sur les réseaux}
+		
+\subsection{Définitions et exemples}
+Nous considérons un espace euclidien, c'est-à-dire un espace vectoriel réel de dimension finie muni d'un produit scalaire, noté $\langle f, g \rangle$. Ici, nous utiliserons le produit scalaire usuel, défini par $\langle f, g \rangle = f \cdot g^T$ lequel induit la norme-2, donnée par $\|f\|_2=(f \cdot f^T)^{1/2}$.
+	
+	
+Dans la littérature, on trouve les trois définitions suivantes d’un réseau euclidien qui représentent le même objet.
+	
+\begin{definition}[\cite{MCA}]
+	Soit $n \in \mathbb{N}$ et $f_1, \cdots, f_n \in \mathbb{R}^n$.
+		
+	Alors $\mathcal{L} = \sum_{1 \leq i \leq n} \mathbb{Z} f_i$ est un réseau euclidien
+\end{definition}
 
-	\begin{definition}[\cite{clef_unique_2}]
-		Un \textbf{réseau euclidien} $(\Lambda, q)$ est un $\mathbb{Z}$-module libre $\Lambda$ de rang fini avec une forme quadratique définie positive $q$ sur $\Lambda \otimes_\mathbb{Z} \mathbb{R}$ 
-	\end{definition}
+\begin{definition}[\cite{Wallet}]
+	Un \textbf{réseau euclidien} est un sous-groupe discret de $\mathbb{R}^n$
+\end{definition}
+
+\begin{definition}[\cite{clef_unique_2}]
+	Un \textbf{réseau euclidien} $(\Lambda, q)$ est un $\mathbb{Z}$-module libre $\Lambda$ de rang fini avec une forme quadratique définie positive $q$ sur $\Lambda \otimes_\mathbb{Z} \mathbb{R}$ 
+\end{definition}
+
+\begin{example}
+	Les entiers de Gauss forment un réseau dans $\mathbb{C}$ de rang $1$.
+\end{example}
+
+\begin{example}
+	Un exemple plus exotique, $\mathbb{Z} + \sqrt(2) \mathbb{Z}$ est un réseau de $\mathbb{Z}$.
+\end{example}
 	
-	Soit $\mathcal{L}$ un réseau euclidien. Il existe une famille $\mathbb{Z}$-libre maximale $(b_i)_{1 \leq i \leq n}$ dans $\mathcal{L}$ tel que $\mathcal{L} = Zb_1 \oplus \cdots \oplus Zb_n$, qu'on appelle \textbf{base du réseau} $\mathcal{L}$, si on note $B$ la matrice des $(b_i)$ on notera $L(B)$ le réseau de base $B$, donc engendré par les $(b_i)$.
+Soit $\mathcal{L}$ un réseau euclidien. Il existe une famille $\mathbb{Z}$-libre maximale $(b_i)_{1 \leq i \leq n}$ dans $\mathcal{L}$ tel que $\mathcal{L} = Zb_1 \oplus \cdots \oplus Zb_n$, qu'on appelle \textbf{base du réseau} $\mathcal{L}$, si on note $B$ la matrice des $(b_i)$ on notera $L(B)$ le réseau de base $B$, donc engendré par les $(b_i)$.
 	
-	L'entier $n$ est commun à toutes les bases de $L$ et on l'appelle rang de $L$. Lorsque $n=m$, on dit que le réseau est de rang plein.
+L'entier $n$ est commun à toutes les bases de $L$ et on l'appelle rang de $L$. Lorsque $n=m$, on dit que le réseau est de rang plein.
 	
-	\begin{proposition}%Wallet
-		Soit $L$ et $L'$ deux réseaux de rang $n$ de base $B$ et $B'$.
+\begin{proposition}%Wallet
+	Soit $\mathcal{L}$ et $\mathcal{L}'$ deux réseaux de rang $n$ de base $B$ et $B'$.
 		
-		Alors $L$ = $L'$ si et seulement si $\exists U \in M_n(\mathbb{Z})$ tel que $B'=BU$ et $U \in GL_n(\mathbb{Z})$
-	\end{proposition}
+	Alors $\mathcal{L}$ = $\mathcal{L}'$ si et seulement si $\exists U \in M_n(\mathbb{Z})$ tel que $B'=BU$ et $U \in GL_n(\mathbb{Z})$
+\end{proposition}
+
+\begin{remark}
+	Nous avons la suite d'inclusions suivante : $2\mathbb{Z} \subset \mathbb{Z} \subset \frac{1}{2}\mathbb{Z}$. On observe que $\text{rang}(2\mathbb{Z}) = \text{rang}(\mathbb{Z}) = \text{rang}(\frac{1}{2}\mathbb{Z})$, bien que les ensembles soient distincts, c'est-à-dire $2\mathbb{Z} \neq \mathbb{Z} \neq \frac{1}{2}\mathbb{Z}$. Ce phénomène montre que, contrairement aux espaces vectoriels, pour les réseaux, l'inclusion et avoir le même rang ne suffisent pas à garantir l'égalité des ensembles.
+\end{remark}
+
+\begin{remark}
+	On remarque également qu'un ensemble de points non alignés dans un réseau ne constitue pas nécessairement une base si son déterminant est différent de $\pm 1$ multiplié par $\|L\|$.
+\end{remark}
+
+
+définition d'un sous réseau
+
+Nous présentons maintenant deux invariants fondamentaux d'un réseau : 
+\begin{itemize}
+	\item La \textbf{taille du vecteur minimal} du réseau, notée $\lambda_1(\mathcal{L})$, 
+	\item Le \textbf{volume du réseau}, aussi appelé la \textbf{taille du réseau} souvent désigné par $|\mathcal{L}|$.
+\end{itemize}
+
+\begin{definition}
+	La taille d'un réseau $\mathcal{L}(B)$ est $det(B)$ et est noté $\|L\|$. La taille d'un réseau est indépendant de la base choisie.
+\end{definition} 
+
+\begin{proposition}
+	Soit $\mathcal{L}$ un réseau de $\mathbb{R}^n$. Si $\mathcal{L}'$ est un sous réseau de $\mathcal{L}$ alors $\|\mathcal{L}'\| divise \|\mathcal{L}\|$	
+\end{proposition}
+
+En substituant $\mathbb{Z}$ par un anneau de polynômes particulier, on obtient ce qu'on appelle les réseaux polynomiaux. % à détailler car K[X][Y] ne fait pas l'affaire par exemple
 	
-	\begin{definition}
-		La taille d'un réseau $L(B)$ est $det(B)$ et est noté $\|L\|$. La taille d'un réseau est indépendant de la base choisie.
-	\end{definition} 
-	
-	En substituant $\mathbb{Z}$ par un anneau de polynômes, on obtient ce qu'on appelle les réseaux polynomiaux.
-	
-	\begin{example}
+\begin{definition}[\cite{Wallet}]
+	On appelle \textbf{minimum d'un réseau} $\mathcal{L}$ la quantité
 		
-	\end{example}
-	\begin{definition}[\cite{Wallet}]
-		On appelle \textbf{minimum d'un réseau} $\mathcal{L}$ la quantité
+	$$\lambda_1 = min\{r>0 : |\mathcal{B}(r)\cap\mathcal{L}|>1\} \in \mathbb{R_+}$$
+\end{definition}
+
+Plus généralement, pour $k \in \{1, \cdots, n\}$, on pose $\lambda_k(\mathcal{L})$ le plus petit réel $r$ tel qu'il existe $k$ vecteurs $\mathbb{R}$-linéairement indépendants dans $\mathcal{L}$ de norme au plus $r$.
+
+Différentes bases peuvent être associées à un même réseau.
+\begin{example}
+	Les bases $B = \left(\begin{array}{rr}1 & 0 \\0 & 1\end{array}\right)$ et $B'=\left(\begin{array}{rr}1 & -1 \\-2 & 1\end{array}\right)$ engendrent le même réseau.
 		
-		$$\lambda_1 = min\{r>0 : |\mathcal{B}(r)\cap\mathcal{L}|>1\} \in \mathbb{R_+}$$
-	\end{definition}
-	
-	
-	On a vu que différentes bases peuvent être associées à un même réseau. Existe-t-il une notion de "bonne base" ? Nous verrons qu'une base idéale est celle qui est la plus orthogonale possible. Cette question est en lien avec des problèmes ouverts majeurs, tels que leShortest Vector Problem (SVP) et le closest vector problem 
-	 (CVP).
-	\begin{example}
-		Les bases $B = \left(\begin{array}{rr}1 & 0 \\0 & 1\end{array}\right)$ et $B'=\left(\begin{array}{rr}1 & -1 \\-2 & 1\end{array}\right)$ engendrent le même réseau.
+	Ici $U = B'^{-1} = \left(\begin{array}{rr}-1 & -1 \\-2 & -1\end{array}\right)$ et on voit que $det(U)=-1$. Donc $B$ et $B'$ engendrent le même réseau $\mathcal{L}$.
 		
-		Ici $U = B'^{-1} = \left(\begin{array}{rr}-1 & -1 \\-2 & -1\end{array}\right)$ et on voit que $det(U)=-1$. Donc $B$ et $B'$ engendrent le même réseau $\mathcal{L}$.
-		
-		On a $\|L\| = 1$ et $\lambda_1( \mathcal{L}) = 1$
-	\end{example}
-	
+	On a $\|\mathcal{L}\| = 1$ et $\lambda_1( \mathcal{L}) = \lambda_2( \mathcal{L}) = 1$
+\end{example}
+
+Existe-t-il une notion de "bonne base" ? Nous verrons qu'une base idéale est celle qui est la plus orthogonale possible. Cette question est en lien avec des problèmes ouverts majeurs, tels que le \textbf{\textit{Shortest Vector Problem}} (SVP) et le \textbf{\textit{closest vector problem}} (CVP).
+
+
+\begin{theoreme}[Premier théorème de Minkowski]
+Pour tout $n \in \mathbb{N}^*$, il existe une constante $C_n > 0$ telle que pour tout réseau $\mathcal{L}$ de $\mathbb{R}^n$, on a :
+
+$$\lambda_1(\mathcal{L}) \leq C_n \|\mathcal{L}\|^{1/n}$$.
+
+En fait, on peut prendre cette constante égale à $C_n=(2/\sqrt{\pi}) \Gamma(n/2+1)^{1/n}$. On appelle constante de Hermite-Minkowski le carré de la constante optimale possible pour cette inégalité, noté $\gamma _n$, en particulier on a $\gamma _n \leq C_n$.
+\end{theoreme}
+
+\begin{theoreme}
+	Soit $\mathcal{L}$ un réseau de $\mathbb{R}^n$. Soit $S$ une partie convexe symétrique de $\mathbb{R}^n$ telle que $vol(S) > 2^n \|\mathcal{L}\|$, alors il existe $s \in \mathcal{L} \cap S$ non nul. De plus cette inégalité est large si on suppose $S$ compact.
+\end{theoreme}
+
+\begin{remark}
+	Comme $\|\mathcal{L}\|$ est un invariant du réseau, si on a n'importe quelle base du réseau on peut trouver une approximation de $\lambda_1$.
+\end{remark}
+
+\begin{theoreme}[Inégalité d'Hadamard]
+Soit $B \in M_n(\mathbb{K})$. On a $\|\det(B)\| \leq \prod_{i=1}^{n} \| b_i \|$, la borne est atteinte si, et seulement si $(b_i)_{1, \cdots, n}$ est une famille orthogonale.	
+\end{theoreme}
+
+Une connexion intéressante entre la base de Gram-Schmidt associée à une base d’un réseau et la norme du plus court vecteur de ce réseau.
+
+\begin{proposition}
+Soit $\mathcal{L} \subset \mathbb{R}^n$ un réseau de base $f_1, \cdots, f_n$ et soit $f_1^*, \cdots, f_n^*$ sa base de GS associé.
+
+Alors pour tout $x \in \mathcal{L} \backslash \{0\} \|x\| \geq min \{\|f_1^*\|, \cdots, \|f_n^*\|\}$
+\end{proposition}
+
+
 	\subsection{Quelques problèmes algorithmiques liés aux réseaux euclidiens}
 	
 	Le calcul du plus court vecteur dans un réseau est un problème difficile.
@@ -395,17 +478,54 @@
 	\end{itemize}	
 	
 	\subsection{Réduction de réseaux euclidiens}
-	
+
 	\subsubsection{Généralités}
 	
-	\begin{definition}{\cite{MCA}}
-		Soit $f_1, \cdots, f_n \in \mathbb{R}^n$ une base et $f_1^*, \cdots, f_n^*\in\mathbb{R}^n$ sa base de Gram-Schmidt associée.
+\begin{definition}{\cite{MCA}}
+	Soit $f_1, \cdots, f_n \in \mathbb{R}^n$ une base et $f_1^*, \cdots, f_n^*\in\mathbb{R}^n$ sa base de Gram-Schmidt associée.
+	
+	On dit que $(f_1, \cdots, f_n)$ est \textbf{réduite} si $\|f_i^*\|^2 \leq 2 \| f_{i+1}^*\|^2$ pour $1 \leq i \leq n$ 
+\end{definition}
+	
+\begin{remark}
+	Chaque vecteur de la base réduite a une norme au moins égale à la moitié de celle du précédent, garantissant ainsi une décroissance modérée.
+\end{remark}	
+	
+	\begin{comment}
+	
+	idée : encrypter un truc ave cLLL
+	allini def : Une base bi de R n est dite propre si les coeffs de la matrice U apres GS sotn <=1/2
+	
+	LLL permet de fournir un algo en temps polynomial pour factoriser des polynomes univariés à coefficents entiers. On pourra modifier l'algo pour elf aire factoriser des polynomes bivcariés sur un corps qui a deja la factoriastion sur un pol univarié Q ou cirps finis
+	
+	parler du fait que le probleme du plsu court vecteur est np dur avec pas d'instance facile par lensa je crois ou arji, on va pouvoir calculer un relativement petit vecteur qui depend de la dimension mais pas dur eseau
+	
+	
+	
+	niz d'abeile pas un reseau
+	
+	intéret a etudier les Q modules ? une sorte d'entre deux entre Z module et R module, 
+	
+	un resaeu ne peut pas etre dense
+	
+	En cryptographie il est coutume de considérer des vecteurs en lignes, parler de oplus  de reseau
+	
+	parler du cout de LLL mca
+	
+	parler un peu des resaus sans genertaurs genre dual
+	
+	ca veut dire quoi un polynome modulo m ?
+	
+	resultant de deux polynomes
+	
+	parler de O tildechercher un premier lien entre pol et nombre parler de matrice gramiene
+	
+	\end{comment}
+
+notation pour l'entier le plus proche avec la partie entiere + 1/2	
+
+L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe simple : il calcule la meilleure approximation entière de la décomposition de Gram-Schmidt et réduit la base en réorganisant les vecteurs si nécessaire. Cet algorithme est décrit dans \cite{MCA}.	
 		
-		On dit que $(f_1, \cdots, f_n)$ est \textbf{réduite} si $\|f_i^*\|^2 \leq 2 \| f_{i+1}^*\|^2$ pour $1 \leq i \leq n$ 
-	\end{definition}
-	
-	L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe simple : il calcule la meilleure approximation entière de la décomposition de Gram-Schmidt et réduit la base en réorganisant les vecteurs si nécessaire. Cet algorithme est décrit dans \cite{MCA}.
-	
 	Le code complet de l'algorithme est présenté dans l'annexe \ref{sec:annexe_code}.
 	\begin{algorithm}
 		\caption{BasisReduction (LLL) \cite{MCA}}
@@ -439,37 +559,23 @@
 	\end{algorithm}
 	
 	\subsection{Réduction de réseaux polynomiaux}
-	Cette section sur la réduction des réseaux polynomiaux est fortement inspirée de \cite{CCLebreton}.  
-	
-	La réduction des réseaux polynomiaux est un outil essentiel. Par exemple, elle peut être utilisée pour le décodage des codes de Reed-Solomon. Dans cette partie, nous présenterons les idées et les outils permettant de réduire les réseaux polynomiaux en temps polynomial, en nous appuyant sur les meilleurs exposants connus à ce jour.  
-	
-	Lorsque l'on travaille avec des matrices à coefficients dans un corps fini \(\mathbb{F}\), de nombreuses opérations ont des complexités équivalentes : la multiplication de matrices, l'inversion d'une matrice, le calcul du déterminant ou encore la résolution d'un système linéaire. Mais qu'en est-il lorsque les matrices ont leurs coefficients dans \(\mathbb{F}[X]\) ?  
-	
-	Dans ce cas, le calcul du déterminant est équivalent à la multiplication de matrices. D'autres opérations, comme l'ordonnancement des bases et la réduction de colonnes, restent également de complexité comparable. En revanche, l'inversion d'une matrice ne l'est plus, en raison de la taille de la sortie.
 	
 	
-	La base d'ordre est un concept imortant en travaillant avec les matrices polynomiales pour réduire beaucoup de problemes à la multiplicatiob
+	La réduction des réseaux polynomiaux est un outil essentiel. Par exemple, elle peut être utilisée pour le décodage des codes de Reed-Solomon généralisés. Dans cette partie, nous présenterons les idées et les outils permettant de réduire les réseaux polynomiaux en temps polynomial, en nous appuyant sur les meilleurs exposants connus à ce jour. Lorsque l'on travaille avec des matrices à coefficients dans un corps fini \(\mathbb{F}\), de nombreuses opérations ont des complexités équivalentes comme la multiplication, l'inversion, le calcul du déterminant ou encore la résolution d'un système linéaire. Mais qu'en est-il lorsque les matrices ont leurs coefficients dans \(\mathbb{F}[X]\) ? Dans ce cas, le calcul du déterminant est équivalent à la multiplication de matrices. D'autres opérations, comme l'ordonnancement des bases et la réduction de colonnes, restent également de complexité comparable. En revanche, l'inversion d'une matrice ne l'est plus, en raison de la taille de la sortie. L'objectif de cette partie est donc d'une part de remédier à ces problèmes, mais d'autre part de faire l'état de l'art actuel sur la réduction de réseaux polynomiaux. Cette section sur la réduction des réseaux polynomiaux est fortement inspirée de \cite{CCLebreton}.  
 	
-	Soit F un corps fii, F X <=d les polyonme sur F de degré <= d et F x m n les matrices m n avex coeff polynomiau
-	
-	slide 6
-	
-	
-	Soit $F \in \mathbb{F}[X]^{m \times n}$. On définit $(F, \sigma):= \{v \in \mathbb{F}^{1 \times m}$ tel que $ vF = 0$ mod $x^\sigma\}$
+	Soit $F \in \mathbb{F}[X]^{m \times n}$. On définit $(F, \sigma):= \{v \in \mathbb{F}^{1 \times m}$ tel que $ vF = 0$ mod $x^\sigma\}$. On appellera sigma la précision
 	
 	\begin{proposition}
-		$(F, \sigma)$ est un $\mathbb{F}[X]$ module de dimension $m$.
+		$(F, \sigma)$ est un $\mathbb{F}[X]$-module de dimension $m$.
 	\end{proposition}
 
-	preuve : Il faut montrer que c'est un sous-groupe additif stable pour la multiplication?
-	
+	faire la preuve, Il faut montrer que c'est un sous-groupe additif stable pour la multiplication.
 	
 	\begin{definition}
-		Une base d'ordre P de F $\sigma$
-		 est une base du F X module de F $\sigma$ de degré minimale
+		Une $(F, \sigma)$ base d'ordre $P$ est une base(au sens des F[X]-modules) $(F, \sigma)$ de degré minimale.
 	\end{definition}
 	
-	mais qsuelle est la notionn de dégré, quelle ets la notion d'ordre et de miniaité ?
+	c'est quoi degré ? c'est quoi minimale ?
 	
 	
 	\begin{definition}[\cite{clef_unique_0}]
@@ -497,30 +603,107 @@
 		
 	\end{example}
 	
-	Mais on a un problème
+	Mais on a un problème, si c = bA, alors rdeg(c) n'est pas lié à rdeg(b)e et rdeg(A) en général
 	
 	\begin{definition}
 		Soit $s \in \mathbb{Z}^n$. On définit le degré de ligne décalé du vecteur ligne M par :
 		$$rdeg_s(M)=max(deg(m_i)+s_i\\)$$
 	\end{definition}
+
 	degré décalé d'une matrice
 	
+	Remarque : Onnnote x^s par la matrice diagonale x^s1, ..., xŝn , alors rdeg_s(A) = redeg (A x^s)
+
+	
 	exemple
+	Si $F =
+	\left(\begin{array}{rrrr}
+		1 & 0 & 1 & 1 \\
+		x & 1 & x + 1 & 0 \\
+		1 & x^{3} + x^{2} & x & 0 \\
+		x^{2} & 0 & x^{4} + x^{3} & 0
+	\end{array}\right) \in \mathbb{F}_2[x]
+	$ et $s =(1, 0, 0, 1)$ alors 
 	
-	notation $x^s$
+	rdeg_s F = rdeg (F . x^s) = rdeg $F =
+	\left(\begin{array}{rrrr}
+		x & 0 & 1 & x \\
+		x^2 & 1 & x + 1 & 0 \\
+		x & x^{3} + x^{2} & x & 0 \\
+		x^{3} & 0 & x^{4} + x^{3} & 0
+	\end{array}\right) \in \mathbb{F}_2[x]
+ =(1, 2, 3, 4)$
 	
-	remarque 2
+	remarque 2 : maintenant tdeg_s(A) = x^-v A x^s
 	
-	transitivité slide 12
+	redegsA = v ssi rdeg .. = 0
+	redeg <= v ssi <= 0
+	
+	exemple 
+	
+	transitivité  des degrés de ligne décalé 14:27
 	
 	On va définir un ordre sur les row degree
 	
+	\begin{definition}
+		
+	\end{definition}
 	
-	
+	Remarque : ce n'est pas un ordre total
 	matrice row reduced def
 	
 	
 	pour parler d'un minimum faudrait un ordre total
+	
+	
+	définiton de matrice réduite par ligne
+	
+	reformulation de la définition
+	on définit une base d'ordre comme une base ligné réduite
+	
+	propostion : il existe une base réduite par ligne P de (F, sigma))
+	
+	exemple
+	
+	remarque : on a l'existance, mais pas l'unicité, si on veut l'unicité, on doit avoir une condition en plus : la forme de Popov
+	
+	definition du leading coerfrcient
+	
+	exemple
+	
+	on revisite le lemme de transitivité
+	
+	preuve de ca
+	
+	
+	généralisation : 26:39
+	Lemme
+	Si lcoeff(A) est injective (a gauche), alors A est réduite par lignre
+	
+	preuve
+	
+	Comment row reduire une matrice ?
+	Forme de Weak Popov :
+	31:34
+	
+	COMMENT rendre une matrice weak popov ?
+	
+	on a l'algo de mulder storjohann
+	
+	Une suite decrosisante de row degree doit etre stable
+	
+	lien avec base de grobner
+	
+	diapao 35:05
+	
+	Weak popov => row reduced
+	
+	Complexité de l'algo
+	
+	O(m^3 d^2) 
+	
+	on va faire mieux
+	
 	
 	algo DAC
 	 je cite \cite{clef_unique_2} et puis \cite{clef_unique_3} et finalement \cite{clef_unique_4}
@@ -712,6 +895,8 @@
 	
 	\begin{example}
 		Soit $n \in \mathbb{N}$, $\mathbb{Z}/n \mathbb{Z}$ est un $\mathbb{Z}$-module.
+		
+		Z carré peut etr evu comme un Z module (c'est un groupe abelien pour l'addition, )
 	\end{example}
 
 	\begin{definition}
@@ -721,6 +906,8 @@
 	% contre exemple au fait d'etre stable pour la multiplication externe ?
 	
 	%exemple et contre-exemple de modules
+	
+	un sous module dans Z n est un sous groupe de Z n avec m < n on a forcément stable multiplcaiton et le citer pour dire qu'un sous groupe d'un reseau est forcement un reseau jsp si c'est uile
 	
 	\begin{definition}
 		Un $A$-module $M$ est dit de \textbf{type fini} s'il existe une partie finie $S$ de $M$ tel que $M$ soit engendré par $S$.
@@ -751,12 +938,14 @@
 	\end{example}
 	
 	
-	
+	théorie des modules sur des anneaux principaux : on a la suite d'inclusion
 	\chapter{Rappels d'algèbre linéaire}
 	
 	Dans ce mémoire, les matrices sont considérées comme des matrices dont les éléments sont des vecteurs ligne.
 	
 	% demander à Romain si je met GS ici ou ailleurs
+	
+	def base orthogonale
 	
 	\section{Orthonormalisation de Gram-Schmidt (GSO)}
 	
