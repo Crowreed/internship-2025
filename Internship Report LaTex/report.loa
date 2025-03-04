@@ -1,2 +1,6 @@
 \contentsline {algorithm}{\numberline {1}{\ignorespaces BasisReduction (LLL) \blx@tocontentsinit {0}\cite {MCA}}}{10}{algorithm.1}%
-\contentsline {algorithm}{\numberline {2}{\ignorespaces GramSchmidt (GSO)}}{19}{algorithm.2}%
+\contentsline {algorithm}{\numberline {2}{\ignorespaces Weak-Popov}}{13}{algorithm.2}%
+\contentsline {algorithm}{\numberline {3}{\ignorespaces Basis}}{13}{algorithm.3}%
+\contentsline {algorithm}{\numberline {4}{\ignorespaces M-Basis}}{13}{algorithm.4}%
+\contentsline {algorithm}{\numberline {5}{\ignorespaces PM-Basis}}{13}{algorithm.5}%
+\contentsline {algorithm}{\numberline {6}{\ignorespaces GramSchmidt (GSO)}}{21}{algorithm.6}%

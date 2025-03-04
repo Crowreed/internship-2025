@@ -9,16 +9,16 @@
 \contentsline {subsection}{\numberline {1.2.1}Réduction de réseaux euclidiens}{9}{subsection.1.2.1}%
 \contentsline {subsubsection}{Généralités}{9}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}Réduction de réseaux polynomiaux}{9}{subsection.1.2.2}%
-\contentsline {chapter}{\numberline {2}Adaptation de la réduction de réseaux polynomiaux au cas entier}{12}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Réseaux définis par relations plutôt que par générateurs}{13}{chapter.3}%
-\contentsline {chapter}{\numberline {A}Rappels d'algèbre : Groupes, Anneaux et Modules}{15}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Définition et propriétés des groupes}{15}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Définition et propriétés des anneaux}{15}{section.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}Généralités}{15}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}Anneaux de polynômes}{16}{subsection.A.2.2}%
-\contentsline {section}{\numberline {A.3}Définition et propriétés des modules}{16}{section.A.3}%
-\contentsline {subsection}{\numberline {A.3.1}Généralités}{16}{subsection.A.3.1}%
-\contentsline {subsection}{\numberline {A.3.2}Modules sur un anneau principal}{17}{subsection.A.3.2}%
-\contentsline {chapter}{\numberline {B}Rappels d'algèbre linéaire}{18}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Orthonormalisation de Gram-Schmidt (GSO)}{18}{section.B.1}%
-\contentsline {chapter}{\numberline {C}Code SageMath}{20}{appendix.C}%
+\contentsline {chapter}{\numberline {2}Adaptation de la réduction de réseaux polynomiaux au cas entier}{14}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Réseaux définis par relations plutôt que par générateurs}{15}{chapter.3}%
+\contentsline {chapter}{\numberline {A}Rappels d'algèbre : Groupes, Anneaux et Modules}{17}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Définition et propriétés des groupes}{17}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Définition et propriétés des anneaux}{17}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Généralités}{17}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}Anneaux de polynômes}{18}{subsection.A.2.2}%
+\contentsline {section}{\numberline {A.3}Définition et propriétés des modules}{18}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}Généralités}{18}{subsection.A.3.1}%
+\contentsline {subsection}{\numberline {A.3.2}Modules sur un anneau principal}{19}{subsection.A.3.2}%
+\contentsline {chapter}{\numberline {B}Rappels d'algèbre linéaire}{20}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Orthonormalisation de Gram-Schmidt (GSO)}{20}{section.B.1}%
+\contentsline {chapter}{\numberline {C}Code SageMath}{22}{appendix.C}%

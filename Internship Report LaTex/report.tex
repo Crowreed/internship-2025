@@ -561,29 +561,30 @@ L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe si
 	\subsection{Réduction de réseaux polynomiaux}
 	
 	
-	La réduction des réseaux polynomiaux est un outil essentiel. Par exemple, elle peut être utilisée pour le décodage des codes de Reed-Solomon généralisés. Dans cette partie, nous présenterons les idées et les outils permettant de réduire les réseaux polynomiaux en temps polynomial, en nous appuyant sur les meilleurs exposants connus à ce jour. Lorsque l'on travaille avec des matrices à coefficients dans un corps fini \(\mathbb{F}\), de nombreuses opérations ont des complexités équivalentes comme la multiplication, l'inversion, le calcul du déterminant ou encore la résolution d'un système linéaire. Mais qu'en est-il lorsque les matrices ont leurs coefficients dans \(\mathbb{F}[X]\) ? Dans ce cas, le calcul du déterminant est équivalent à la multiplication de matrices. D'autres opérations, comme l'ordonnancement des bases et la réduction de colonnes, restent également de complexité comparable. En revanche, l'inversion d'une matrice ne l'est plus, en raison de la taille de la sortie. L'objectif de cette partie est donc d'une part de remédier à ces problèmes, mais d'autre part de faire l'état de l'art actuel sur la réduction de réseaux polynomiaux. Cette section sur la réduction des réseaux polynomiaux est fortement inspirée de \cite{CCLebreton}.  
+	La réduction des réseaux polynomiaux est un outil essentiel. Par exemple, elle peut être utilisée pour le décodage des codes de Reed-Solomon généralisés. Dans cette partie, nous présenterons les idées et les outils permettant de réduire les réseaux polynomiaux en temps polynomial, en nous appuyant sur les meilleurs exposants connus à ce jour. Lorsque l'on travaille avec des matrices à coefficients dans un corps fini \(\mathbb{F}\), de nombreuses opérations ont des complexités équivalentes comme la multiplication, l'inversion, le calcul du déterminant ou encore la résolution d'un système linéaire. Mais qu'en est-il lorsque les matrices ont leurs coefficients dans \(\mathbb{F}[X]\) ? Dans ce cas, le calcul du déterminant est équivalent à la multiplication de matrices. D'autres opérations, comme l'ordonnancement des bases et la réduction de colonnes, restent également de complexité comparable. En revanche, l'inversion d'une matrice ne l'est plus, en raison de la taille de la sortie. L'objectif de cette partie est donc d'une part de remédier à ces problèmes, mais d'autre part de faire l'état de l'art actuel sur la réduction de réseaux polynomiaux. Cette section sur la réduction des réseaux polynomiaux est fortement inspirée de \cite{CCLebreton}. \\
 	
-	Soit $F \in \mathbb{F}[X]^{m \times n}$. On définit $(F, \sigma):= \{v \in \mathbb{F}^{1 \times m}$ tel que $ vF = 0$ mod $x^\sigma\}$. On appellera sigma la précision
+	Soit $F \in \mathbb{F}[X]^{m \times n}$. On définit $(F, \sigma):= \{v \in \mathbb{F}^{1 \times m}$ tel que $ vF = 0$ mod $x^\sigma\}$. On appellera sigma la \textbf{précision}.
 	
 	\begin{proposition}
 		$(F, \sigma)$ est un $\mathbb{F}[X]$-module de dimension $m$.
 	\end{proposition}
 
-	faire la preuve, Il faut montrer que c'est un sous-groupe additif stable pour la multiplication.
+	\begin{preuve}
+		contenu...
+	\end{preuve}
+
+\begin{definition}
+	Une $(F, \sigma)$ \textbf{base d'ordre} $P$ est une base (au sens des $\mathbb{F}[X]$-modules) $(F, \sigma)$ de degré minimale.
+\end{definition}
 	
-	\begin{definition}
-		Une $(F, \sigma)$ base d'ordre $P$ est une base(au sens des F[X]-modules) $(F, \sigma)$ de degré minimale.
-	\end{definition}
+Quelle est la définition du degré ? Que signifie "minimale" dans ce contexte ?
+
+\begin{definition}[\cite{CCLebreton}]
+	Soit $\mathbb{K}$ un corps et $M \in \mathbb{K}[x]_{1 \times n}$. On définit le \textbf{degré de ligne} du vecteur ligne M par : 
+	$$rdeg(M)=max(deg(m_i))_{i\in\{1, \cdots, n\}}$$
+\end{definition}
 	
-	c'est quoi degré ? c'est quoi minimale ?
-	
-	
-	\begin{definition}[\cite{clef_unique_0}]
-		Soit $\mathbb{K}$ un corps et $M \in \mathbb{K}[x]_{1 \times n}$. On définit le \textbf{degré de ligne} du vecteur ligne M par : 
-		$$rdeg(M)=max(deg(m_i))_{i\in\{1, \cdots, n\}}$$
-	\end{definition}
-	
-	\begin{definition}[\cite{clef_unique_0}]
+	\begin{definition}[\cite{CCLebreton}]
 		Soit $\mathbb{K}$ un corps et $M \in \mathbb{K}[x]_{n \times n}$. On définit le \textbf{degré de ligne} de la matrice M par :
 		$$rdeg(M)=max(rdeg(ligne_i))_{i\in\{1, \cdots, n\}}$$
 	\end{definition}
@@ -603,71 +604,147 @@ L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe si
 		
 	\end{example}
 	
-	Mais on a un problème, si c = bA, alors rdeg(c) n'est pas lié à rdeg(b)e et rdeg(A) en général
+	Mais on a un problème, si $c = bA$, alors $rdeg(c)$ n'est pas forcément lié à $rdeg(b)$ et $rdeg(A)$.
 	
 	\begin{definition}
-		Soit $s \in \mathbb{Z}^n$. On définit le degré de ligne décalé du vecteur ligne M par :
+		Soit $s \in \mathbb{Z}^n$. On définit le \textbf{degré de ligne décalé} du vecteur ligne M par :
 		$$rdeg_s(M)=max(deg(m_i)+s_i\\)$$
 	\end{definition}
 
-	degré décalé d'une matrice
+\begin{definition}
+	Soit $s \in \mathbb{Z}^n$. On définit le \textbf{degré de ligne décalé} de la matrice M par :
+	$$rdeg_s
+	\left( \left(
+	\begin{array}{r}
+		ligne 1 \\ 
+		\vdots \\
+		ligne m
+	\end{array} 
+\right) \right)=(rdeg_s(ligne i))_{i=1, \cdots, m}\in \mathbb{Z}^m$$
+\end{definition}
 	
-	Remarque : Onnnote x^s par la matrice diagonale x^s1, ..., xŝn , alors rdeg_s(A) = redeg (A x^s)
+On note $x^s$ par la matrice diagonale 
+$\left(\begin{array}{rrr}
+	x^{s_1} &        & \\
+		    & \ddots & \\
+		    &        & x^{s_n}
+	\end{array}\right)$
 
-	
-	exemple
+\begin{proposition}
+	$rdeg_s(A) = redeg (A x^s)$
+\end{proposition}
+
+\begin{example}
 	Si $F =
 	\left(\begin{array}{rrrr}
-		1 & 0 & 1 & 1 \\
+	 	1 & 0 & 1 & 1 \\
 		x & 1 & x + 1 & 0 \\
 		1 & x^{3} + x^{2} & x & 0 \\
 		x^{2} & 0 & x^{4} + x^{3} & 0
 	\end{array}\right) \in \mathbb{F}_2[x]
 	$ et $s =(1, 0, 0, 1)$ alors 
 	
-	rdeg_s F = rdeg (F . x^s) = rdeg $F =
+	$rdeg_s F = rdeg (F . x^s) = rdeg(F) =
 	\left(\begin{array}{rrrr}
 		x & 0 & 1 & x \\
 		x^2 & 1 & x + 1 & 0 \\
 		x & x^{3} + x^{2} & x & 0 \\
 		x^{3} & 0 & x^{4} + x^{3} & 0
 	\end{array}\right) \in \mathbb{F}_2[x]
- =(1, 2, 3, 4)$
+	=(1, 2, 3, 4)$
+\end{example}
 	
-	remarque 2 : maintenant tdeg_s(A) = x^-v A x^s
+\begin{proposition}
 	
-	redegsA = v ssi rdeg .. = 0
-	redeg <= v ssi <= 0
+	$rdeg_s(A)=v = v$ ssi $rdeg(x^{-v} A x^s) = 0$
+	$rdeg_s(A)\leq v <= v$ ssi $rdeg(x^{-v} A x^s)\leq 0$
 	
-	exemple 
+\end{proposition}
 	
-	transitivité  des degrés de ligne décalé 14:27
+\begin{example}
+		Si $F =
+	\left(\begin{array}{rrrr}
+		1 & 0 & 1 & 1 \\
+		x & 1 & x + 1 & 0 \\
+		1 & x^{3} + x^{2} & x & 0 \\
+		x^{2} & 0 & x^{4} + x^{3} & 0
+	\end{array}\right)$, $u = (1, 0, 0, 1)$.
+
+Alors $v = red_u(F) = (1, 2, 3, 4)$ et
 	
-	On va définir un ordre sur les row degree
+	$x^{-v} A x^u =
+	\left(\begin{array}{rrrr}
+		1 & 0 & x^{-1} & 1 \\
+		1 & x^{-2} & x^{-2} + x^{-1} & 0 \\
+		x^{-2} & x^{-1} + 1 & x^{-2} & 0 \\
+		x^{-1} & 0 & x^{-1} + 1 & 0
+	\end{array}\right)$
+\end{example}
 	
-	\begin{definition}
-		
-	\end{definition}
+\begin{proposition}
+	transitivité  des degrés de ligne décalé 14:27, slide 12
+\end{proposition}
+
+\begin{preuve}
 	
-	Remarque : ce n'est pas un ordre total
-	matrice row reduced def
+\end{preuve}
 	
+On va définir un ordre sur les rowdegree, bien que non total.
 	
-	pour parler d'un minimum faudrait un ordre total
+\begin{definition}
+	Soit $u = (u_1, \cdots, u_m)$, $v = (v_1, \cdots, v_m) \in \mathbb{Z}^m$ deux degrés de ligne, on définit $\leq_{ob}$ par : 
+	$$u \leq_{ob} v \text{ ssi } u_i \leq v_i \forall i$$
+\end{definition}
 	
+\begin{remark}
+	$\leq_{ob}$ n'est pas un ordre total.
+\end{remark}
 	
-	définiton de matrice réduite par ligne
+Je pense décaler ceci dans l'annexe sur les modules :
+
+
+\begin{definition}
+	$U \in \mathbb{F}[X]^{m \times m}$ est dit \textbf{unimodulaire} si $det(U) \in F\backslash\{ 0 \}$
+\end{definition}
+
+\begin{proposition}
+	$U$ est unimodulaire si, et seulement si, $U$ est inversible
+\end{proposition}
+
+\begin{proposition}
+	Si $P$, $Q$ sont deux bases de lignes du même $\mathbb{F}[X]$-module, alors il existe $U$ unimodulaire tel que $P = UQ$
+\end{proposition}
 	
-	reformulation de la définition
-	on définit une base d'ordre comme une base ligné réduite
+
+Fin d'annexe sur les modules
+
+\begin{definition}
+	Soit $F \in \mathbb{F}[X]^{m \times n}$. On dit que $F$ est réduite par ligne si pour tout U unimodulaire, on a :
+	$$rdeg(F) \leq_{ob} rdeg(UF)$$
+\end{definition}
+pour parler d'un minimum faudrait un ordre total
+
+On revoit enfin la définition ref de façon rigoureuse : 
+\begin{definition}
+	Une base d'ordre P est une base du F[X]-module de F sigma qui est réduite par ligne	
+\end{definition}
 	
-	propostion : il existe une base réduite par ligne P de (F, sigma))
+\begin{proposition}
+	il existe une base réduite par ligne P de (F, sigma)
+\end{proposition}
 	
-	exemple
+\begin{example}
+	contenu... slide 15, à programmer
+\end{example}
 	
-	remarque : on a l'existance, mais pas l'unicité, si on veut l'unicité, on doit avoir une condition en plus : la forme de Popov
+slide 16 sur tentative de preuve naive
+
+On a l'existance, mais pas l'unicité, si on veut l'unicité, on doit avoir une condition en plus : la forme de Popov.
 	
-	definition du leading coerfrcient
+\begin{definition}
+	Soit $v = rdeg_u(A)$, alors la matrice des coefficients dominants de A, noté lcoeff(A), est la partie constante de $x^{-v}Ax^s$
+\end{definition}
+
 	
 	exemple
 	
@@ -683,12 +760,19 @@ L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe si
 	preuve
 	
 	Comment row reduire une matrice ?
-	Forme de Weak Popov :
-	31:34
 	
-	COMMENT rendre une matrice weak popov ?
+On note [d] un polynôme de degré d, on définit les pivots de ligne comme l'élément de la ligne de degré maximale le plus à droite.
+
+\begin{definition}
+	Une matrice W est en forme Popov faile si ses pivots ont des indices distincts.
+\end{definition}
+
+\begin{example}
+	contenu...
+\end{example}	
 	
-	on a l'algo de mulder storjohann
+Comment rendre une matrice weak popov ?on a l'algo de mulder storjohann
+	
 	
 	Une suite decrosisante de row degree doit etre stable
 	
@@ -700,12 +784,77 @@ L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe si
 	
 	Complexité de l'algo
 	
-	O(m^3 d^2) 
+	$O(m^3 d^2)$ 
 	
 	on va faire mieux
+\begin{algorithm}
+	\caption{Weak-Popov}
+	\label{algo:Weak-Popov} 
+	\ref{algo:Weak-Popov}
+	
+	\begin{algorithmic}[1]
+		\State \textbf{Entrée :} $A \in \mathbb{F} [X]^{m \times n}$
+		\State \textbf{Sortie :} La forme de Popov faible de $A$
+		
+		\State \textbf{1.} Ajouter des multiples d’un monôme d’une ligne à une autre afin de :
+		\begin{itemize}
+			\item soit déplacer un pivot vers la gauche,
+			\item soit diminuer le degré d’une ligne.
+		\end{itemize}
+		\State \textbf{2.} S’arrêter lorsque plus aucune transformation n’est possible.
+	\end{algorithmic}
+\end{algorithm}	
+	
+\begin{algorithm}
+	\caption{Basis}
+	\label{algo:Basis} 
+	\ref{algo:Basis}
+	
+	\begin{algorithmic}[1]
+		\State Hello
+	\end{algorithmic}
+\end{algorithm}	
 	
 	
-	algo DAC
+\begin{algorithm}
+	\caption{M-Basis}
+	\label{algo:M-Basis} 
+	\ref{algo:M-Basis}
+	
+	\begin{algorithmic}[1]
+		\State $P_0 := Basis(F mod x)$
+		\For {$k de 1 à sigma-1$}
+		\State $F' := x^{-k} P_{k-1} F$
+		\State $M_k := Basis (F' mod x)$
+		
+		\State $P_k := M_k P_{k-1}$
+		\EndFor
+		\State Retourner $P_{\sigma -1}$
+	\end{algorithmic}
+\end{algorithm}
+
+	
+	\begin{algorithm}
+		\caption{PM-Basis}
+		\label{algo:PM-Basis} 
+		\ref{algo:PM-Basis}
+		
+		\begin{algorithmic}[1]
+			\If{$\sigma=1$}
+			\State Retourner Basis(F mod x)			
+			\Else
+			\State $P_{low} :=$ PM-Basis $(F, \lfloor \sigma/2 \rfloor)$
+			\State Soit F' tel que $P_low F = x^{}F'$
+			\State $P_{high} :=$ PM-Basis $(F', \lfloor \sigma/2 \rfloor)$
+			\EndIf
+			\State Retourner $P_{high}P_{low}$
+		\end{algorithmic}
+	\end{algorithm}
+	
+\begin{theoreme}
+	contenu...
+\end{theoreme}
+	
 	 je cite \cite{clef_unique_2} et puis \cite{clef_unique_3} et finalement \cite{clef_unique_4}
 	
 	\chapter{Adaptation de la réduction de réseaux polynomiaux au cas entier}
@@ -896,7 +1045,7 @@ L'algorithme LLL (proposé par Lenstra et al. en YYYY) repose sur un principe si
 	\begin{example}
 		Soit $n \in \mathbb{N}$, $\mathbb{Z}/n \mathbb{Z}$ est un $\mathbb{Z}$-module.
 		
-		Z carré peut etr evu comme un Z module (c'est un groupe abelien pour l'addition, )
+		$Z^2$ peut etre vu comme un $Z$-module (c'est un groupe abelien pour l'addition, )
 	\end{example}
 
 	\begin{definition}

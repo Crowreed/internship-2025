@@ -2353,8 +2353,8 @@
     <bcf:citekey order="7">MCA</bcf:citekey>
     <bcf:citekey order="8">MCA</bcf:citekey>
     <bcf:citekey order="9">CCLebreton</bcf:citekey>
-    <bcf:citekey order="10">clef_unique_0</bcf:citekey>
-    <bcf:citekey order="11">clef_unique_0</bcf:citekey>
+    <bcf:citekey order="10">CCLebreton</bcf:citekey>
+    <bcf:citekey order="11">CCLebreton</bcf:citekey>
     <bcf:citekey order="12">clef_unique_2</bcf:citekey>
     <bcf:citekey order="13">clef_unique_3</bcf:citekey>
     <bcf:citekey order="14">clef_unique_4</bcf:citekey>
@@ -2364,11 +2364,10 @@
     <bcf:citekey order="18">Wallet</bcf:citekey>
     <bcf:citekey order="19">clef_unique_2</bcf:citekey>
     <bcf:citekey order="20">CCLebreton</bcf:citekey>
-    <bcf:citekey order="21">clef_unique_0</bcf:citekey>
-    <bcf:citekey order="22">clef_unique_3</bcf:citekey>
-    <bcf:citekey order="23">clef_unique_4</bcf:citekey>
-    <bcf:citekey order="24">ring_modules</bcf:citekey>
-    <bcf:citekey order="25">harari_modules</bcf:citekey>
+    <bcf:citekey order="21">clef_unique_3</bcf:citekey>
+    <bcf:citekey order="22">clef_unique_4</bcf:citekey>
+    <bcf:citekey order="23">ring_modules</bcf:citekey>
+    <bcf:citekey order="24">harari_modules</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
